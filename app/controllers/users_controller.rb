@@ -2,18 +2,31 @@ class UsersController < ApplicationController
 	before_action :current_user, only:[:edit, :update, :destroy]
 	before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
 	
+# ------------------------------------------------
 
-	def create
+	def update_user_page
+		@user = current_user
 	end
 
-	def update_page
-	end
 
+# the users parameters are wrong since we havent set how to find the specific user yet
 	def update_user
-		user_update = User.update(first_name:params[:first_name_update], last_name:params[:last_name_update], email:params[:email_update])
-		address_update = Address.update(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
+		user_update = User.find(params[:user_id]).update(first_name:params[:first_name_update], last_name:params[:last_name_update], email:params[:email_update])
+		address_update = Address.find().update(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
 
-		# redirect to the main user page
+		# redirect to the main user page which is not set yet
 		redirect_to '' 
+	end
+
+# ------------------------------------------------
+
+	def update_vet_page
+		@user = current_user
+	end
+
+# the address parameters are wrong since we havent set how to find the specific addresses yet
+	def update_vet
+		vet_update = Vet.find().update(first_name:params[:vet_first_name_update], last_name:params[:vet_last_name_update], email:params[:vet_email_update])
+		vet_address_update = Address.update(street:params[:vet_street_update], city:params[:vet_city_update], state:params[:vet_state_update], zip:params[:vet_zip_update])
 	end
 end
