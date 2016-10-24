@@ -7,8 +7,48 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<nav>
+	<div class="nav-wrapper blue darken-4">
+	<ul id="nav-mobile" class="right hide-on-med-and-down">
+	<li>
+	<% if current_user %>
+		<div class="row">
+		 <div class="col 12s short">
+		  <form action='/sessions/logout' method='post'>
+		    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+		    <input type='hidden' name='_method' value='delete'>
+		    <input class="waves-effect waves-light btn small-btn" type='submit' value='Log Out'>
+		  </form>
+  		</div>
+  	  </div>
+ 	<% else %>
+	 <div class="row">
+		 <div class="col 12s short">
+			  <form action="/sessions/login" method="post">
+				  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
+				  <div class="col 6s input-field white black-text">
+					<input class="field" id="Email" type="email" name="email" placeholder="Email">
+				  </div>
+				  <div class="col 6s input-field white black-text">
+					<input class="field" id="Password" type="password" name="password" placeholder="Password">
+				  </div>
+				  <div class="col 6s">
+					<input class="waves-effect waves-light btn small-btn" type="submit" value="Log In">
+				  </div>
+			  </form>
+		  </div>
+	 </div>
+<% end %>
+</li>
+	</div>
+	<div class="nav-wrapper blue lighten-3">
+	</div>
+</nav>
+	<div class="container">
+	<% if flash[:error] %>
+	   <p><%= flash[:error] %>
+    <% end %>
+		<%= yield %>
+	</div>
 </body>
 </html>
