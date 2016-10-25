@@ -6,10 +6,13 @@ Rails.application.routes.draw do
 
   get "sessions/new" => "sessions#new"
   get "user/profile" => "users#users_profile"
+  get "users/:id" => "users#users_profile"
+  get "vets/:id" => "users#vets_profile"
 
 # ------- [post] ----------------------------
-
-	post "users/register" => "users@create"
+  post 'sessions/signin' => 'sessions#login'
+	post "users/register" => "users#create_user"
+	post "vets/register" => "users#create_vet"
 
   post "pet/create" => "pets@create"
 
@@ -30,5 +33,10 @@ Rails.application.routes.draw do
   patch '/vet/update/:id' => 'users#update_vet'
 
   patch '/pet/update/:id' => 'pet#update'
+<<<<<<< Updated upstream
 
+=======
+  # ------- [patch] ----------------------------
+	delete 'sessions/logout' => 'sessions#destroy'
+>>>>>>> Stashed changes
 end
