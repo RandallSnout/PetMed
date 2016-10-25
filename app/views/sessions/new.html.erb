@@ -30,10 +30,11 @@
         </div>
       </li>
     </ul>
-    <a class="modal-trigger waves-effect waves-light btn newbtn1" href="#modal1">Patient Registration</a>
-    <a class="modal-trigger waves-effect waves-light btn newbtn2" href="#modal2">Doctor Registration</a>
-</div>
     
+    </div>
+</div>
+    <a class="modal-trigger waves-effect waves-light btn newbtn1" href="#modal1">Patient Registration</a>
+    <a class="modal-trigger waves-effect waves-light btn newbtn2 reg" href="#modal2">Doctor Registration</a>
     
 
     <!--User Registration-->
@@ -103,7 +104,7 @@
 </div>
 
     <!--Doc Registration-->
-<div id="modal2" class="modal">
+<div id="reg" class="modal">
   <div class="modal-content">    
     <form class="col s12 form_u " action="/users/register" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

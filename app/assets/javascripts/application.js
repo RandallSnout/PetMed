@@ -27,14 +27,11 @@ $(document).ready(function(){
     $('.slider').slider({full_width: true});
     $('.slider').slider('pause');
 
-    // $('.register1').click(function(){
-    // 	$('#register').openModal();
-    // })
+    $('.reg').click(function(){
+    	$('#reg').openModal();
+    })
     // $('.modal-trigger').leanModal();
     // $(".dropdown-button").dropdown();
-
-
-    $('.slider').slider({full_width: true});
 
 
   });

@@ -28,15 +28,33 @@
 .modal { 
 	width: 15% !important ;  
 }
-.slider_box {
+.slider_box-right {
 	background: white;
 	border-radius:15px;
-	width: 62%;
+	width: 50%;
 	color:grey;
 	padding:10px;
-	margin: auto
+	float: right;
+}
+.slider_box-rightOpp {
+	background: rgba(255, 255, 255, 0.7); 
+	border-radius:15px;
+	width: 50%;
+	color:black;
+	padding:10px;
+	float: right;
+}
+.slider_box-left {
+	background: white;
+	border-radius:15px;
+	width: 50%;
+	color:grey;
+	padding:10px;
 }
 .round {
 	border-radius: 15px;
 }
 img {width:100%;}
+.clear {
+	clear:both;
+}
