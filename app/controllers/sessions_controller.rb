@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-	reset_session
+		reset_session
     redirect_to action: "new"
 	end
 
