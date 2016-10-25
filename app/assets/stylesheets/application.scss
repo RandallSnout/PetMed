@@ -5,7 +5,9 @@
 @import "materialize";
 
 
-.html_one {
-	background-image: url ('/assets/images/Wallpaper_New.jpg');
+.background {
+	z-index:0;
+	background-image: url('/assets/Background.jpg');
+	background-repeat: ;
 
 }

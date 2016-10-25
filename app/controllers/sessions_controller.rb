@@ -6,12 +6,12 @@ class SessionsController < ApplicationController
 	def login
 		@user = User.find_by_email(params[:email]) 
 		@vet = Vet.find_by_email(params[:email]) 
-			if @user
-				@user.authenticate(params[:password])
+			if @user 
+				@user && @user.authenticate(params[:password])
 				session[:user_id] = @user.id
 				redirect_to "/users/#{@user.id}"
 			elsif @vet
-				@vet.authenticate(params[:password])
+				@user && @vet.authenticate(params[:password])
 				session[:lender_id] = @lender.id
 				redirect_to "/lenders/#{@lender.id}"
 			else

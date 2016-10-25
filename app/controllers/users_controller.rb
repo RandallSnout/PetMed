@@ -10,12 +10,30 @@ class UsersController < ApplicationController
 		@user = current_user
 	end
 
+	def users_profile 
+
+	end
+
 	def create
+		vet = Vet.new(vet_params)
 		address = Address.new(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
 	    user = User.new(user_params)
+<<<<<<< HEAD
 	      if user.save && address.save
 	        session[:lender_id] = lender.id
 	        redirect_to "/users/profile/#{user.id}"
+=======
+	      if  address.save
+	      	user.address_id = address.id
+	      	user.save
+	        session[:user_id] = user.id
+	        redirect_to "/user/profile"
+	    elsif  address.save
+	      	vet.address_id = vet.id
+	      	vet.save
+	        session[:vet_id] = vet.id
+	        redirect_to "/vet/profile"
+>>>>>>> origin/master
 	      else
 	        flash[:error] = lender.errors.full_messages
 	        redirect_to :back
@@ -46,7 +64,12 @@ class UsersController < ApplicationController
 
 	private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password) 
+    params.require(:user).permit(:first_name, :last_name, :email, :password, ) 
+  end
+
+  	private
+  def vet_params
+    params.require(:user).permit(:first_name, :last_name, :office_name, :email, :password) 
   end
 
 end
