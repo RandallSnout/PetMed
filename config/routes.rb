@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   get "sessions/new" => "sessions#new"
 
+# ------- [post] ----------------------------
+
+	post "users/register" => "users@create"
+
 # ------- [get] ----------------------------
   get '/update/user' => 'users#update_user_page'
 
