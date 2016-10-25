@@ -10,10 +10,16 @@ Rails.application.routes.draw do
 
 	post "users/register" => "users@create"
 
+  post "pet/create" => "pets@create"
+
 # ------- [get] ----------------------------
+  get '/users/profile' => 'users#users_profile'
+
   get '/update/user' => 'users#update_user_page'
 
   get '/update/vet' => 'users#update_vet_page'
+
+  get '/new/pet' => 'pets#new'
 
   get '/update/pet' => 'pet#update_pet_page'
 
@@ -23,4 +29,5 @@ Rails.application.routes.draw do
   patch '/vet/update/:id' => 'users#update_vet'
 
   patch '/pet/update/:id' => 'pet#update'
+
 end

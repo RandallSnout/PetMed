@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025015932) do
+ActiveRecord::Schema.define(version: 20161025211727) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -30,8 +30,12 @@ ActiveRecord::Schema.define(version: 20161025015932) do
     t.string   "color"
     t.integer  "user_id"
     t.string   "pin"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "pets", ["user_id"], name: "index_pets_on_user_id"
@@ -42,8 +46,12 @@ ActiveRecord::Schema.define(version: 20161025015932) do
     t.string   "email"
     t.string   "password_digest"
     t.integer  "address_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["address_id"], name: "index_users_on_address_id"
@@ -55,8 +63,12 @@ ActiveRecord::Schema.define(version: 20161025015932) do
     t.string   "office_name"
     t.string   "password_digest"
     t.integer  "address_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "vets", ["address_id"], name: "index_vets_on_address_id"

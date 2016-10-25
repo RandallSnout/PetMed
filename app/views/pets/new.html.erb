@@ -1,0 +1,40 @@
+<div class="row">
+<div class="col s6">
+	<h3>Add a new pet.</h3>
+	<form action="/pet/create" method="post">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<div class="row">
+		<label for="pet_pic">Profile Picture:</label> 
+		</div>
+		<div class="row">
+		<input id="pet_pic" type="file" name="pet_pic">
+		</div>
+		<div class="input-field">
+		<label for="pet_name">Name:</label> 
+		<input id="pet_name" type="text" name="pet_name">
+		</div>
+		<label for="pet_sex">Sex:</label> 
+		<select id="pet_sex" class="browser-default">
+			<option selected="selected" value="" hidden="">Select Sex</option> 
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+		</select>
+		<div class="input-field">
+		<label for="pet_species">Species:</label> 
+		<input id="pet_species" type="text" name="pet_species">
+		</div>
+		<div class="input-field">
+		<label for="pet_age">Age:</label> 
+		<input id="pet_age" type="number" name="pet_age">
+		</div>
+		<div class="input-field">
+		<label for="pet_color">Color:</label> 
+		<input id="pet_color" type="text" name="pet_color">
+		</div>
+		<input class="waves-effect waves-light btn" type="Submit" value="Add Pet">
+		<a class="waves-effect waves-light btn" href="/users/profile/">Back</a>
+	</form>
+</div>
+<div class="col s6">
+	<h4>Add Current Pet Records</h4>
+</div>

@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 	before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
 	
 # ------------------------------------------------
+	def users_profile
+	end
 
 	def update_user_page
 		@user = current_user
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
 	    user = User.new(user_params)
 	      if user.save && address.save
 	        session[:lender_id] = lender.id
-	        redirect_to ""
+	        redirect_to "/users/profile/#{user.id}"
 	      else
 	        flash[:error] = lender.errors.full_messages
 	        redirect_to :back
