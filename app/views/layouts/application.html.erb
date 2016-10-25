@@ -5,21 +5,64 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+  	$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.login').click(function(){
+    	$('#log1').openModal();
+    })
+    $('.modal-trigger').leanModal();
+    $(".dropdown-button").dropdown();
+  });
+  </script>
 </head>
 <body>
-	<div class="top_menu">
-		<div class="container">
-			<img src="" alt="Pet Med">
-			<div class="sub_menu">
-				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Find Vet</a></li>
-					<li><a href="#">Sign Up</a></li>
-				</ul>
-			</div>
+	<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">Owner</a></li>
+  <li><a href="#!">Vet Office</a></li>
+</ul>
+  <div id="log1" class="modal">
+	<div class="row">
+		<div class="col s12">
+			  <form action="/sessions/login" method="post">
+				  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
+				  <label for="Email">Email</label>
+					<input id="Email" type="email" name="email" placeholder="Email">
+				  <label for="Password">Password</label>
+					<input id="Password" type="password" name="password" placeholder="Password">
+					<div class="col s6 offset-s3">
+					<input class="waves-effect waves-light btn small-btn" type="submit" value="Log In">
+					</div>
+			  </form>
 		</div>
-	</div>
+	 </div>
+  </div>
+<nav>
+  <div class="nav-wrapper">
+  <div class="container">
+    <a href="#!" class="brand-logo">Pet Med</a>
+    <ul class="left hide-on-med-and-down margin-left">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Find Vet</a></li>
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Sign Up Today</a></li>
+    </ul>
+    <ul class="right">
+    	<li><% if current_user %>
+			  <form action='/sessions/logout' method='post'>
+			    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+			    <input type='hidden' name='_method' value='delete'>
+			    <input class="waves-effect waves-light btn small-btn" type='submit' value='Log Out'>
+			  </form>
+			<% else %>
+				<a class="wwaves-effect waves-light btn login">Log In</a>
+			<% end %>
+		</li>
+    </ul>
+  </div>
+</nav>
 	<div class="container">
 		<%= yield %>
 	</div>
