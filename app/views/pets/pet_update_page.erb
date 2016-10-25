@@ -1,0 +1,16 @@
+<div>
+	<form action="/pet/update/<%= @pet.id %>" method="post">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<input type="hidden" name="_method" value="">
+		Name: <input type="text" name="pet_name_update">
+		Sex: <select>
+				<option selected="selected"><%= @pet.sex %></option> 
+				<option>Male</option>
+				<optgroup>Female</optgroup>
+			 </select>
+		Species: <input type="text" name="pet_species_update">
+		Age: <input type="number" name="pet_age_update">
+		Color: <input type="text" name="pet_color_update">
+		<input type="Submit" value="Update Records">
+	</form>
+</div>
