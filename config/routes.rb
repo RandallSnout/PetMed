@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "pages/about" => "pages#about"
 
   get "sessions/new" => "sessions#new"
+  get "user/profile" => "users#users_profile"
 
 # ------- [post] ----------------------------
 

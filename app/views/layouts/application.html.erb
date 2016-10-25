@@ -8,7 +8,17 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+
+<% if !current_user %>
+	
+<body class="background">
+
+<% else %>
+
 <body>
+
+<% end %>
 	<!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
   <li><a href="#!">Owner</a></li>
