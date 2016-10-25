@@ -33,10 +33,8 @@ Rails.application.routes.draw do
   patch '/vet/update/:id' => 'users#update_vet'
 
   patch '/pet/update/:id' => 'pet#update'
-<<<<<<< Updated upstream
 
-=======
-  # ------- [patch] ----------------------------
+  # ------- [destroy] ----------------------------
 	delete 'sessions/logout' => 'sessions#destroy'
->>>>>>> Stashed changes
+
 end

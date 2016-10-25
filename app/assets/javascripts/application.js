@@ -25,7 +25,7 @@ $(document).ready(function(){
     $('.modal-trigger').leanModal();
     $(".dropdown-button").dropdown();
     $('.slider').slider({full_width: true});
-    $('.slider').slider('pause');
+
 
     $('.reg').click(function(){
     	$('#reg').openModal();

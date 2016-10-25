@@ -20,41 +20,16 @@ class UsersController < ApplicationController
 
 	def create_vet
 		vet = Vet.new(vet_params)
-<<<<<<< Updated upstream
-		address = Address.new(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
-	    user = User.new(user_params)
-<<<<<<< HEAD
-	      if user.save && address.save
-	        session[:lender_id] = lender.id
-	        redirect_to "/users/profile/#{user.id}"
-=======
-	      if  address.save
-	      	user.address_id = address.id
-	      	user.save
-	        session[:user_id] = user.id
-	        redirect_to "/user/profile"
-	    elsif  address.save
+		address = Address.new(address_params)
+	    if  address.save
 	      	vet.address_id = vet.id
 	      	vet.save
 	        session[:vet_id] = vet.id
 	        redirect_to "/vet/profile"
->>>>>>> origin/master
-	      else
-	        flash[:error] = lender.errors.full_messages
+	     else
+	        flash[:error] = vet.errors.full_messages
 	        redirect_to :back
-	     end
-=======
-		address = Address.new(address_params)
-		if address.save
-			vet.address_id = vet.id
-	    vet.save
-	    session[:vet_id] = vet.id
-	    redirect_to "/vet/profile"
-    else
-			flash[:error] = vet.errors.full_messages
-			redirect_to :back
->>>>>>> Stashed changes
-	  end
+	    end
 	end
 
 	def create_user
