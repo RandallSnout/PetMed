@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  def current_user
-    User.find(session[:user_id]) if session[:user_id]
+    def current_user
+    if session[:user_id]
+      User.find(session[:user_id]) 
+    elsif session[:user_id]
+      Vet.find(session[:user_id])
+    end
   end
 
   def require_login
@@ -12,25 +16,30 @@ class ApplicationController < ActionController::Base
    helper_method :current_user
 
   def require_correct_user
-    user = User.find(params[:id])
-    redirect_to "/users/#{current_user.id}" if current_user != user
+    if 
+      user = User.find(params[:id])
+    else 
+      user = Vet.find(params[:id]) 
+    end
+    redirect_to "/sessions/#{current_user.id}" if current_user != user
   end
   
   protect_from_forgery with: :exception
+  
   def current_user
     if session[:user_id]
-      Lender.find(session[:user_id]) if session[:user_id]
+      User.find(session[:user_id]) if session[:user_id]
     else
-      Borrower.find(session[:vet_id]) if session[:vet_id]
+      Vet.find(session[:vet_id]) if session[:vet_id]
     end
   end
   def require_correct_user
     if session[:user_id]
-      user = Lender.find(params[:id])
-      redirect_to "/lenders/#{current_user.id}" if current_user != user
+      user = User.find(params[:id])
+      redirect_to "/user/#{current_user.id}" if current_user != user
     else
-      user = Borrower.find(params[:id]) 
-      redirect_to "/borrowers/#{current_user.id}" if current_user != user
+      user = Vet.find(params[:id]) 
+      redirect_to "/vet/#{current_user.id}" if current_user != user
     end
   end
   def require_login

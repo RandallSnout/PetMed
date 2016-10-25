@@ -16,3 +16,24 @@
 //= require_tree .
 //= require materialize-sprockets
 
+
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.login').click(function(){
+    	$('#log1').openModal();
+    })
+    $('.modal-trigger').leanModal();
+    $(".dropdown-button").dropdown();
+
+    // $('.register1').click(function(){
+    // 	$('#register').openModal();
+    // })
+    // $('.modal-trigger').leanModal();
+    // $(".dropdown-button").dropdown();
+
+
+    $('.slider').slider({full_width: true});
+
+
+  });
+

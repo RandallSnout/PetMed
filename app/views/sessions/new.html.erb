@@ -1,0 +1,179 @@
+<div class="oneh">
+    <div class="slider">
+    <ul class="slides">
+      <li>
+        <%= image_tag "Wallpaper_New2.jpg"%> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <%= image_tag "Wallpaper_New3.jpg"%> <!-- random image -->
+        <div class="caption left-align">
+          <h3>Left Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <%= image_tag "Wallpaper_New4.jpg"%> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <%= image_tag "Wallpaper_New3.jpg"%> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+    </ul>
+    <a class="modal-trigger waves-effect waves-light btn newbtn1" href="#modal1">Patient Registration</a>
+    <a class="modal-trigger waves-effect waves-light btn newbtn2" href="#modal2">Doctor Registration</a>
+</div>
+    
+    
+
+    <!--User Registration-->
+  <div id="modal1" class="modal">
+    <div class="modal-content">    
+      <form class="col s12 form_u " action="/users/register" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="First Name" id="first_name" type="text" class="validate" name="first_name">
+            <label for="first_name">First Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="Last Name" id="last_name" type="text" class="validate" name="last_name">
+            <label for="last_name">Last Name</label>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="Email" id="email" type="email" class="validate" name="email">
+            <label for="email">Email</label>
+          </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="Password" id="password" type="password" class="validate" name="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+              <label for="passConfirm">Password Confirmation</label>
+              <input id="passConfirm" type="password" name="password_confirmation">
+            <h5 class="h5l">Address</h5>
+          </div>
+        </div>
+        <div class="inline1">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Street" id="street" type="text" class="validate" name="street">
+              <label for="street">Street</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="City" id="city" type="text" class="validate" name="city">
+              <label for="city">City</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="State" id="state" type="text" class="validate" name="state">
+              <label for="state">State</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Zip Code" id="zip" type="number" class="validate" name="zip">
+              <label for="zip">Zip Code</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+        <input class="btn waves-light submit1" type="submit" value="Submit" >
+        </div>
+      </form>
+  </div>
+
+    <!--User Registration-->
+  <div id="modal2" class="modal">
+    <div class="modal-content">    
+      <form class="col s12 form_u " action="/users/register" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="Office Name" id="first_name" type="text" class="validate" name="office_name">
+            <label for="office_name">Office Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="DR.'s First Name" id="last_name" type="text" class="validate" name="first_name">
+            <label for="last_name">DR.'s First Name</label>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="DR.'s Last Name" id="last_name" type="text" class="validate" name="last_name">
+            <label for="last_name">DR.'s Last Name</label>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="Email" id="email" type="email" class="validate" name="email">
+            <label for="email">Email</label>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="Password" id="password" type="password" class="validate" name="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <label for="passConfirm">Password Confirmation</label>
+            <input id="passConfirm" type="password" name="password_confirmation">
+            <h5 class="h5l">Address</h5>
+          </div>
+        </div>
+        <div class="inline1">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Street" id="street" type="text" class="validate" name="street">
+              <label for="street">Street</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="City" id="city" type="text" class="validate" name="city">
+              <label for="city">City</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="State" id="state" type="text" class="validate" name="state">
+              <label for="state">State</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Zip Code" id="zip" type="number" class="validate" name="zip">
+              <label for="zip">Zip Code</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+        <input class="btn waves-light submit1" type="submit" value="Submit" >
+        </div>
+      </form>
+  </div>
+
+</div>

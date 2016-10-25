@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "pages/finder" => "pages#finder"
   get "pages/about" => "pages#about"
 
+  get "sessions/new" => "sessions#new"
+
 # ------- [get] ----------------------------
   get '/update/user' => 'users#update_user_page'
 
