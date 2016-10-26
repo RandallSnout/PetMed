@@ -15,9 +15,10 @@ class UsersController < ApplicationController
 		@pets = Pet.where("user_id = #{current_user.id}")
 	end
 
-	def vets_profile 
-		@user = User.find(current_user.id)
-		@clients = Users.all.where("user_type == owner")
+	def vet_profile 
+		@user = Vet.find(current_user.id)
+		@clients = User.all
+		@address = Address.all
 	end
 
 	def create_vet

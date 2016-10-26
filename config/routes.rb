@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get "users/:id" => "users#users_profile"
   get "vets/register" => "users#create_vet"
-  get "vets/:id" => "users#vets_profile"
+  get "vet/:id" => "users#vet_profile"
 
 # ------- [post] ----------------------------
   post 'sessions/signin' => 'sessions#login'
