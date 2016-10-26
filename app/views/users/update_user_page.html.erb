@@ -3,6 +3,7 @@
 	<a href="/users/bypass/<%= current_user.id %>">Yes</a>
 	<a href="/update/user/<%= current_user.id %>">No</a>
 <% end %>
+
 <div class="row">
 	<div class="col s6">
 		<form action="/users/update/<%= @user.id %>" method="post" enctype="multipart/form-data">
@@ -25,18 +26,18 @@
 					</div>
 				</div>
 			</div>
-<<<<<<< HEAD
-		</div>
-		<div class="clear"></div>
-		<label>First Name:</label> 
-		<input type="text" name="first_name_update" value="<%= @user.first_name%>">
-		<label>Last Name:</label> 
-		<input type="text" name="last_name_update" value="<%= @user.last_name%>">
-		<label>Email:</label> 
-		<input type="text" name="email_update" value="<%=@user.email%>">
-		<label>Phone Number:</label>
-		<input type="text" name="phone_number_update" value="<%= @user.phone_number%>">
-		<p>Address:</p>
+
+<div class="clear"></div>
+
+			<label>First Name:</label> 
+			<input type="text" name="first_name_update" value="<%= @user.first_name%>">
+			<label>Last Name:</label> 
+			<input type="text" name="last_name_update" value="<%= @user.last_name%>">
+			<label>Email:</label> 
+			<input type="text" name="email_update" value="<%=@user.email%>">
+			<label>Phone Number:</label>
+			<input type="text" name="phone_number_update" value="<%= @user.phone_number%>">
+			<p>Address:</p>
 			<label>Street:</label> 
 			<input type="text" name="street_update" value="<%= @address.street %>"> 
 			<label>City:</label>
@@ -98,10 +99,29 @@
 				   </select>
 			<label>Zip Code:</label>
 			<input type="number" name="zip_update" value="<%= @address.zip%>">
-		<input class="waves-effect waves-light btn" type="submit" value="Update Records">
-		<a href="/users/<%= @user.id %>" class="waves-effect waves-light btn">Cancel</a>
-	</form>
+			<input class="waves-effect waves-light btn" type="submit" value="Update Records">
+			<a href="/users/<%= @user.id %>" class="waves-effect waves-light btn">Cancel</a>
+		</form>
+	</div>
 </div>
+
 <div class="col s6">
-	<!-- Put Pet Deletes Here -->
+	<a class="waves-effect waves-light btn" href="/new/pet">Add New Pet</a>
+	<div class="row">
+	<% @pets.each do |pet| %>
+	<div class="col s3">
+	  <div class="card">
+	    <div class="card-image waves-effect waves-block waves-light">
+	      <% if pet.avatar_file_name %>
+	      	<%= image_tag pet.avatar.url %>
+	      <% else %>
+	      	<%= image_tag "profile-holder" %>
+	      <% end %>
+	    </div>
+	  </div>
+  </div>
+  <% end %>
+</div>
+
+</div>
 </div>

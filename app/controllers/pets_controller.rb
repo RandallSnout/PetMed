@@ -34,4 +34,9 @@ class PetsController < ApplicationController
 			redirect_to "/users/#{current_user.id}"
 		end
 	end
+
+	def delete
+
+		
+	end
 end

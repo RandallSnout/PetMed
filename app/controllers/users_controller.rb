@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 	before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
 	
 # ------------------------------------------------
+
 	def users_profile
 	end
 
@@ -20,13 +21,6 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def update_user_page
-		if !session[:phone]
-		session[:phone] = 0
-		end
-		@user = current_user
-		@address = Address.find(current_user.id)
-	end
 
 	def users_profile 
 		@user = User.joins(:address).select("first_name", "last_name", "street", "state", "city", "zip", "avatar_file_name").find(current_user.id)
@@ -38,6 +32,9 @@ class UsersController < ApplicationController
 		@clients = User.joins(:address).select("first_name", "last_name", "phone_number", "email", "address_id as U_address", :street, :city, :state, :zip)
 		@pet = Pet.joins(:user).select("name", "sex", "species", "age", "user_id as owner", :first_name,  :last_name)
 	end
+
+# ----------------------------------------------------------------------
+
 
 	def create_vet
 		vet = Vet.new(vet_params)
@@ -66,6 +63,17 @@ class UsersController < ApplicationController
 	      redirect_to :back
 	    end
   	end
+# ----------------------------------------------------------------------
+
+	def update_user_page
+		if !session[:phone]
+		session[:phone] = 0
+		end
+
+		@user = current_user
+		@pets = Pet.where("user_id = #{current_user.id}")
+		@address = Address.find(current_user.id)
+	end
 
 	def update_user
 		if !params[:phone_number_update].empty?
@@ -108,6 +116,7 @@ class UsersController < ApplicationController
 			redirect_to "/users/#{current_user.id}"
 		end
 	end
+
 # ------------------------------------------------
 
 	def update_vet_page
@@ -118,12 +127,13 @@ class UsersController < ApplicationController
 		@vet = Vet.joins(:address).select("first_name", "last_name","email","office_name", "street", "state", "city", "zip").find(params[:id])
 		
 	end
-# the address parameters are wrong since we havent set how to find the specific addresses yet
+
 	def update_vet
 		vet_update = Vet.find().update(first_name:params[:vet_first_name_update], last_name:params[:vet_last_name_update], email:params[:vet_email_update])
 		vet_address_update = Address.update(street:params[:vet_street_update], city:params[:vet_city_update], state:params[:vet_state_update], zip:params[:vet_zip_update])
 	end
 
+# ----------------------------------------------------------------------
 
 	private
   def user_params
