@@ -8,13 +8,32 @@
 	background-image: url('/assets/Background1.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
+	padding-top: 20px;
 }
+
+.fullbackground2 {
+	z-index:0;
+	background-image: url('/assets/Background1.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-top: 5px;
+}
+
 
 .andrew {
 	width: 500px;
     background: rgba(255, 255, 255, 0.3);
     padding-top: 20px;
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
+    margin-left: 37%; 
+
+}
+.andrew2 {
+	width: 500px;
+    background: rgba(255, 255, 255, 0.3);
+    padding-top: 5px;
+    padding-bottom: 20px;
+    margin-left: 37%; 
 
 }
 
@@ -87,7 +106,12 @@
 }
 
 .h5l {
-	margin-left: 183px;
+	margin-left: 33%;
+	color: #7d7c7c;
+}
+
+.h5l2 {
+	margin-left: 33%;
 	color: #7d7c7c;
 }
 

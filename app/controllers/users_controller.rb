@@ -22,15 +22,15 @@ class UsersController < ApplicationController
 	def create_vet
 		vet = Vet.new(vet_params)
 		address = Address.new(address_params)
-	    if  address.save
-	      	vet.address_id = vet.id
-	      	vet.save
-	        session[:vet_id] = vet.id
-	        redirect_to "/vet/profile"
-	     else
-	        flash[:error] = vet.errors.full_messages
-	        redirect_to :back
-	    end
+    if  vet && address.save
+      	vet.address_id = vet.id
+      	vet.save
+        session[:vet_id] = vet.id
+        redirect_to "/vet/profile"
+     else
+        flash[:error] = vet.errors.full_messages
+        redirect_to :back
+    end
 	end
 
 	def create_user
