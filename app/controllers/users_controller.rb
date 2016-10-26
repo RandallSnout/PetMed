@@ -16,7 +16,8 @@ class UsersController < ApplicationController
 	end
 
 	def vets_profile 
-
+		@user = User.find(current_user.id)
+		@clients = Users.all.where("user_type == owner")
 	end
 
 	def create_vet

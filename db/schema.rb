@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025211727) do
+ActiveRecord::Schema.define(version: 20161026015945) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20161025211727) do
     t.string   "name"
     t.string   "sex"
     t.string   "species"
+    t.string   "breed"
     t.float    "age"
     t.string   "color"
     t.integer  "user_id"
