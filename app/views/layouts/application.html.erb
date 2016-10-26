@@ -39,9 +39,9 @@
       <li><a href="/pages/about">About</a></li>
       <li><a href="/pages/finder">Find Vet</a></li>
       <% if session[:user_id] %>
-			<li><a href="/profile/<%=current_user.id%>">My Profile</a></li>
+			<li class="HomeButton"><a class="waves-effect waves-light btn" href="/profile/<%=current_user.id%>">My Profile</a></li>
 			<% elsif session[:vet_id] %>
-			<li><a href="/vet_profile/<%=current_user.id%>">My Profile</a></li>
+			<li class="HomeButton"><a class="waves-effect waves-light btn" href="/vet_profile/<%=current_user.id%>">My Profile</a></li>
 			<% end %>
     </ul>
     <ul class="right"> 
