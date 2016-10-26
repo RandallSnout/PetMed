@@ -14,10 +14,10 @@ Rails.application.routes.draw do
 	post "users/register" => "users#create_user"
 	post "vets/register" => "users#create_vet"
 
-  post "pet/create" => "pets@create"
+  post "pets/create" => "pets#create"
 
 # ------- [get] ----------------------------
-  get '/users/profile' => 'users#users_profile'
+  get '/users/:id' => 'users#users_profile'
 
   get '/update/user' => 'users#update_user_page'
 
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   get '/new/pet' => 'pets#new'
 
-  get '/update/pet' => 'pet#update_pet_page'
+  get '/update/pet/:id' => 'pet#update_pet_page'
 
 # ------- [patch] ----------------------------
   patch '/users/update/:id' => 'users#update_user'

@@ -1,36 +1,43 @@
 <div class="row">
 	<div class="col s3 profile">
-		<%= image_tag "user-profile" %>
+		<a href="/update/user/<%= current_user.id %>">
+		<%= image_tag "profile-holder" %></a>
 	</div>
 	<div class="col s9">
-		<h3>Welcome First Last</h3>
-		<p>Address 1</p>
-		<p>Address 2</p>
-		<p>My Doctor is</p>
+		<h3>Welcome <%= @user.first_name %> <%= @user.last_name %></h3>
+		<p><%= @user.street %></p>
+		<p><%= @user.city %>, <%= @user.state %></p>
+		<p>My Doctor is: Dr. Jim</p>
 		<a class="waves-effect waves-light btn" href="/new/pet">Add New Pet</a>
 	</div>
 </div>
 <div class='clear'></div>
 <div class="row">
+	<% @pets.each do |pet| %>
 	<div class="col s3">
 	  <div class="card">
 	    <div class="card-image waves-effect waves-block waves-light">
-	      <%= image_tag "randall" %>
+	      <% if pet.avatar_file_name != nil %>
+	      	<%= image_tag pet.avatar.url %>
+	      <% else %>
+	      	<%= image_tag "profile-holder" %>
+	      <% end %>
 	    </div>
 	    <div class="card-content">
-	      <span class="card-title activator grey-text text-darken-4">Randall Snout<i class="material-icons right">...</i></span>
-	      <p><a href="/pets/profile/">Pet Profile</a></p>
+	      <span class="card-title activator grey-text text-darken-4"><%= pet.name %><i class="material-icons right">...</i></span>
+	      <p><a href="/pets/profile/<%= pet.id %>">Pet Profile</a></p>
 	    </div>
 	    <div class="card-reveal">
-	      <span class="card-title grey-text text-darken-4">Randall Snout<i class="material-icons right">X</i></span>
+	      <span class="card-title grey-text text-darken-4"><%= pet.name %><i class="material-icons right">X</i></span>
 	      <p>Randalls Profile</p>
 	      <ul>
-	      	<li>Species: Dog</li>
-	      	<li>Sex: Male</li>
-	      	<li>Color: White/Tan</li>
-	      	<li>Age: 6.5 years</li>
+	      	<li>Species: <%= pet.species %></li>
+	      	<li>Sex: <%= pet.sex %></li>
+	      	<li>Color: <%= pet.color %></li>
+	      	<li>Age: <%= pet.age %> years</li>
 	      </ul>
 	    </div>
 	  </div>
   </div>
+  <% end %>
 </div>

@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 	end
 
 	def users_profile 
-
+		@user = User.joins(:address).select("first_name", "last_name", "street", "state", "city").find(current_user.id)
+		@pets = Pet.where("user_id = #{current_user.id}")
 	end
 
 	def vets_profile 
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
     	user.address_id = address.id
     	user.save
       session[:user_id] = user.id
-      redirect_to "/user/profile"
+      redirect_to "/users/#{user.id}"
     else
       flash[:error] = user.errors.full_messages
       redirect_to :back
