@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col s3 profile">
+		<a href="/update/user/<%= current_user.id %>">
+		<%= image_tag "profile-holder" %></a>
+	</div>
+
+	<div class="col s9">
+		<h3>Welcome Dr. <%= @user.first_name %> <%= @user.last_name %></h3>
+		<h3>Here are your clients</h3>
+
+		<table>
+			<tr>
+				<td>Name</td>
+				<td>Address</td>
+				<td>Pets</td>
+			</tr>
+			<% @clients.each do |c| %>
+				<td><%= c.first_name + " " + c.last_name %></td>
+				<td><%= c.street + " " + c.city + " " + c.state + " " + c.zip %></td>
+				<td>
+					<div class="card-reveal">
+				      	<span class="card-title grey-text text-darken-4"><%= pet %><i class="material-icons right">X</i></span>
+
+				      	<!-- list of all the clients pets -->
+				      	<%=   %>
+
+				      	<!-- links to the pet's profile -->
+				      	<p><a href=""><%= pet.name %></a></p>
+				    </div>
+				</td>
+		</table>
+
+		<a href="/update/vet">Update Your Profile</a>
+	</div>
+</div>
+
