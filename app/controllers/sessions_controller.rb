@@ -3,6 +3,9 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def vet_new
+  end
+  
 	def login
 		@user = User.find_by_email(params[:email]) 
 		@vet = Vet.find_by_email(params[:email]) 

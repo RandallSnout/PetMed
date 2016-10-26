@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "pages/finder" => "pages#finder"
   get "pages/about" => "pages#about"
   get "sessions/new" => "sessions#new"
+  get "sessions/doc-new/" => "sessions#vet_new"
   get "user/profile" => "users#users_profile"
   get "users/:id" => "users#users_profile"
   get "vets/:id" => "users#vets_profile"
