@@ -1,0 +1,44 @@
+<div class="row">
+<div class="col s6">
+
+	<h3>Update pet info.</h3>
+	<form action="/pet/update/<%= @pet.id %>" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<input type="hidden" name="_method" value="patch">
+		<div class="row">
+		<div class="col s2">
+		<% if @pet.avatar_file_name != nil %>
+	      	<%= image_tag @pet.avatar.url %>
+	      <% else %>
+	      	<%= image_tag "profile-holder" %>
+	      <% end %>
+	    </div>
+		<label for="pet_pic">Profile Picture:</label> 
+		</div>
+		<div class="row">
+		<input id="pet_pic" type="file" name="avatar" value="<%= @pet.avatar_file_name %>">
+		</div>
+		<div class="clear"></div>
+		<label for="pet_name">Name:</label> 
+		<input id="pet_name" type="text" name="pet_name_update" value="<%= @pet.name %>">
+		<label for="pet_sex">Gender:</label> 
+		<select id="pet_sex" class="browser-default" name="pet_sex_update">
+			<option selected="selected"><%= @pet.sex %></option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+		</select>
+		<label for="pet_species">Species:</label> 
+		<input id="pet_species" type="text" name="pet_species_update" value="<%= @pet.species %>">
+		<label for="pet_breed">Breed:</label> 
+		<input id="pet_breed" type="text" name="breed" value="<%= @pet.breed %>">
+		<label for="pet_age">Age:</label> 
+		<input id="pet_age" type="number" name="pet_age_update" value="<%= @pet.age %>">
+		<label for="pet_color">Color:</label> 
+		<input id="pet_color" type="text" name="pet_color_update" value="<%= @pet.color %>">
+		<input class="waves-effect waves-light btn" type="Submit" value="Update Pet">
+		<a class="waves-effect waves-light btn" href="/users/<%= current_user.id %>">Back</a>
+	</form>
+</div>
+<div class="col s6">
+	<h4>Add Current Pet Records</h4>
+</div>

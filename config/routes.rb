@@ -1,49 +1,51 @@
 Rails.application.routes.draw do
-
+# -------[root]--------------------------------------------------
   root "pages#index"
+
+# -------[front end pages]---------------------------------------
   get "pages/finder" => "pages#finder"
   get "pages/about" => "pages#about"
+
+
+# -------[new owner]---------------------------------------------
   get "sessions/new" => "sessions#new"
-  get "sessions/doc-new/" => "sessions#vet_new"
-  get "user/profile" => "users#users_profile"
 
-  get "users/:id" => "users#users_profile"
+# -------[new vet]-----------------------------------------------
   get "vets/register" => "users#create_vet"
-  get "vet/:id" => "users#vet_profile"
 
-# ------- [post] ----------------------------
+# -------[post]--------------------------------------------------
   post 'sessions/signin' => 'sessions#login'
   post "users/register" => "users#create_user"
   post "vets/register" => "users#create_vet"
   post "pets/create" => "pets#create"
 
-# ------- [get] ----------------------------
+# -------[vet main profile page and update]----------------------
+  get "vet/:id" => "users#vet_profile"
 
+# -------[user to vets profile page]-----------------------------
+  get "vets/public/:id" => "users#vet_show"
+  get '/update/vet/:id' => 'users#update_vet_page'
 
+# -------[main user page and update]----------------------------- 
+  get "users/:id" => "users#users_profile"
   get '/update/user/:id' => 'users#update_user_page'
-
-  get '/update/vet' => 'users#update_vet_page'
-
+  
+# -------[pet register/update/profile]---------------------------
   get '/new/pet' => 'pets#new'
-
+  get '/update/pet/:id' => 'pets#pet_update_page'
   get '/pets/profile/:id' => 'pets#profile'
 
-  get "users/:id" => "users#users_profile"
-
-  get "vets/:id" => "users#vets_profile"
-
-  get '/users/:id' => 'users#users_profile'
-
-  get '/update/pet/:id' => 'pet#update_pet_page'
-
-# ------- [patch] ----------------------------
+# -------[patch for pet/vet/owner updates]-----------------------
   patch '/users/update/:id' => 'users#update_user'
-
   patch '/vet/update/:id' => 'users#update_vet'
+  patch '/pet/update/:id' => 'pets#update'
 
-  patch '/pet/update/:id' => 'pet#update'
+# -------[destroy]-----------------------------------------------
+  delete 'sessions/logout' => 'sessions#destroy'
 
-# ------- [destroy] ----------------------------
-	delete 'sessions/logout' => 'sessions#destroy'
-
+  # get "sessions/doc-new/" => "sessions#vet_new"
+  # get "user/profile" => "users#users_profile"
+  # get "users/:id" => "users#users_profile"
+  # get '/users/:id' => 'users#users_profile'
+  # get "vets/:id" => "users#vets_profile"
 end
