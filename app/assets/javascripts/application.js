@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require_tree .
 //= require materialize-sprockets
 
@@ -34,7 +34,9 @@ $(document).ready(function(){
     })
     // $('.modal-trigger').leanModal();
     // $(".dropdown-button").dropdown();
-
+    $('.new-pic').click(function(){
+        $('#profile-pic').openModal();
+    })
 
   });
 

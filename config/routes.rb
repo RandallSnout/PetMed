@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   get '/pets/profile/:id' => 'pets#profile'
 
 # -------[patch for pet/vet/owner updates]-----------------------
+
+  patch "/users/profilePic/:id" => 'users#update_user_pic'
   patch '/users/update/:id' => 'users#update_user'
   patch '/vet/update/:id' => 'users#update_vet'
   patch '/pet/update/:id' => 'pets#update'

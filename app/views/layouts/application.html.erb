@@ -40,9 +40,9 @@
       <!-- Dropdown Trigger -->
       <li><a class="dropdown-button" href="/sessions/new" data-activates="dropdown1">Sign Up Today</a></li>
     </ul>
-    <ul class="right"> 
+    <ul class="right "> 
     	<li><% if current_user %>
-			  <form action='/sessions/logout' method='post'>
+			  <form class="logOut" action='/sessions/logout' method='post'>
 			    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
 			    <input type='hidden' name='_method' value='delete'>
 			    <input class="waves-effect waves-light btn small-btn" type='submit' value='Log Out'>
