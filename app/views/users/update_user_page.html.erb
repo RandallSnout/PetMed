@@ -25,16 +25,16 @@
 		</div>
 		<div class="clear"></div>
 		<label>First Name:</label> 
-		<input type="text" name="vet_first_name_update" value="<%= @user.first_name%>">
+		<input type="text" name="first_name_update" value="<%= @user.first_name%>">
 		<label>Last Name:</label> 
-		<input type="text" name="vet_last_name_update" value="<%= @user.last_name%>">
+		<input type="text" name="last_name_update" value="<%= @user.last_name%>">
 		<label>Email:</label> 
-		<input type="text" name="vet_email_update" value="<%=@user.email%>">
+		<input type="text" name="email_update" value="<%=@user.email%>">
 		<p>Address:</p>
 			<label>Street:</label> 
 			<input type="text" name="street_update" value="<%= @address.street %>"> 
 			<label>City:</label>
-			<input type="text" name="city_update" value=" <%= @address.city %>">	
+			<input type="text" name="city_update" value="<%= @address.city %>">	
 			<label>State:</label>
 			<select class="browser-default" name="state_update">
 	        		<option selected="selected"><%= @address.state %></option> 
