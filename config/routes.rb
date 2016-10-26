@@ -6,14 +6,13 @@ Rails.application.routes.draw do
   get "pages/finder" => "pages#finder"
   get "pages/about" => "pages#about"
 
-
 # -------[new owner]---------------------------------------------
   get "sessions/new" => "sessions#new"
 
 # -------[new vet]-----------------------------------------------
   get "vets/register" => "users#create_vet"
 
-# -------[post]--------------------------------------------------
+# -------[post for new pet/user/vet]-----------------------------
   post 'sessions/signin' => 'sessions#login'
   post "users/register" => "users#create_user"
   post "vets/register" => "users#create_vet"
@@ -22,12 +21,12 @@ Rails.application.routes.draw do
 # -------[vet main profile page and update]----------------------
   get "vet/:id" => "users#vet_profile"
 
-# -------[user to vets profile page]-----------------------------
+# -------[owner to vets profile page]-----------------------------
   get "vets/public/:id" => "users#vet_show"
   get '/update/vet/:id' => 'users#update_vet_page'
 
 # -------[main user page and update]----------------------------- 
-  get "users/:id" => "users#users_profile"
+  get "/users/:id" => "users#users_profile"
   get '/update/user/:id' => 'users#update_user_page'
   
 # -------[pet register/update/profile]---------------------------

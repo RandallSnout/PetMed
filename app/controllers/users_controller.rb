@@ -52,11 +52,18 @@ class UsersController < ApplicationController
 
 # the users parameters are wrong since we havent set how to find the specific user yet
 	def update_user
-		user_update = User.find(current_user.id).update(first_name:params[:first_name_update], last_name:params[:last_name_update], email:params[:email_update])
-		address_update = Address.find(current_user.id).update(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
-
-		# redirect to the main user page which is not set yet
-		redirect_to '/users/current_user.id' 
+		u = User.find(current_user.id)
+		u.update(first_name:params[:first_name_update], last_name:params[:last_name_update], email:params[:email_update]) 
+		a = Address.find(current_user.id)
+		a.update(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
+		if a.valid? && u.valid?
+			a.save && u.save
+			redirect_to '/users/current_user.id' 
+		else 
+			flash[:owner_err] = "This doesn't work"
+			redirect_to :back
+		end
+			
 	end
 
 # ------------------------------------------------
