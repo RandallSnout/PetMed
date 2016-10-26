@@ -5,7 +5,7 @@
 	</div>
 
 	<div class="col s9">
-		<h3>Welcome Dr. <%= @user.first_name %> <%= @user.last_name %></h3>
+		<h3>Welcome Dr. <%= @vet.first_name %> <%= @vet.last_name %></h3>
 		<h3>Here are your clients</h3>
 
 		<table>
@@ -16,16 +16,21 @@
 			</tr>
 			<% @clients.each do |c| %>
 				<td><%= c.first_name + " " + c.last_name %></td>
-				<td><%= c.street + " " + c.city + " " + c.state + " " + c.zip %></td>
-				<td>
+				<td><%= c.street %>" "<%= c.city %>" "<%=  c.state %>" "<%=  c.zip %></td>
+				<% end %>
+				<% @pet.each do |p| %>
 					<div class="card-reveal">
-				      	<span class="card-title grey-text text-darken-4"><%= pet %><i class="material-icons right">X</i></span>
+					
+				      	<span class="card-title grey-text text-darken-4"><i class="material-icons right">X</i></span>
 
+					
 				      	<!-- list of all the clients pets -->
-				      	<%=   %>
+				      	<p>Owner: <%=  p.first_name %> <%=  p.last_name %></p> 
 
 				      	<!-- links to the pet's profile -->
-				      	<p><a href=""><%= pet.name %></a></p>
+				      	<p>Pet: <a href=""><%= p.name %></a></p>
+				      	<p>Species: <%=  p.species %></p> 
+						
 				    </div>
 				</td>
 			<% end %>
