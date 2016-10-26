@@ -1,25 +1,8 @@
-<<<<<<< HEAD
 <% if flash[:owner_err] %>
 	<p><%= flash[:owner_err] %></p>
 <% end %>
 
-<div>
-	<form action="/users/update/<%= @user.id %>" method="post">
-		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-		<input type="hidden" name="_method" value="patch">
-		<h4>Information:</h4>
-
-		First Name: <input type="text" name="first_name_update" value="<%= @user.first_name%>">
-		Last Name: <input type="text" name="last_name_update" value="<%= @user.last_name%>">
-		Email: <input type="text" name="email_update" value="<%=@user.email%>">
-		Phone Number: <input type="number" name="phone_update" value="<%= @user.phone_number %>">
-		<h4>Address:</h4>
-			Street: <input type="text" name="street_update" value="<%= @address.street %>"> 
-			City: <input type="text" name="city_update" value="<%= @address.city %>">	
-			State: <select class="browser-default" name="state_update">
-<div class="row">
 <div class="col s6">
-<!-- need to fill in the all the ruby tags with current user information -->
 	<form action="/users/update/<%= @user.id %>" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 		<input type="hidden" name="_method" value="patch">

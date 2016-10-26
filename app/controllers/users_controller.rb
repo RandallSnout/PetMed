@@ -58,7 +58,7 @@ class UsersController < ApplicationController
 		a.update(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
 		if a.valid? && u.valid?
 			a.save && u.save
-			redirect_to '/users/current_user.id' 
+			redirect_to '/users/#{current_user.id}' 
 		else 
 			flash[:owner_err] = a.errors.full_messages && u.errors.full_messages
 			redirect_to :back
