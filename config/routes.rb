@@ -11,15 +11,19 @@ Rails.application.routes.draw do
 
 # -------[new vet]-----------------------------------------------
   get "vets/register" => "users#create_vet"
+  get "sessions/vet_new" => "sessions#vet_new"
 
 # -------[post for new pet/user/vet]-----------------------------
   post 'sessions/signin' => 'sessions#login'
   post "users/register" => "users#create_user"
   post "vets/register" => "users#create_vet"
   post "pets/create" => "pets#create"
+# -------[Both User and Vet Redirect]----------------------
+	get "profile/:id" => "users#redirect"
+	get "vet_profile/:id" => "users#vet_redirect"
 
 # -------[vet main profile page and update]----------------------
-  get "vet/:id" => "users#vet_profile"
+  get "vets/:id" => "users#vet_profile"
 
 # -------[owner to vets profile page]-----------------------------
   get "vets/public/:id" => "users#vet_show"

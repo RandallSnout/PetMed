@@ -12,7 +12,7 @@
 <% if current_user %>
 <ul id="dropdown1" class="dropdown-content">
   <li><a href="/sessions/new">Owner</a></li>
-  <li><a href="/sessions/doc-new/">Vet Office</a></li>
+  <li><a href="/sessions/vet_new">Vet Office</a></li>
 </ul>
   <div id="log1" class="modal modalIn">
 	<div class="row login11">
@@ -38,14 +38,18 @@
       <li><a href="/">Home</a></li>
       <li><a href="/pages/about">About</a></li>
       <li><a href="/pages/finder">Find Vet</a></li>
-			<li><a href="/">My Profile</a></li>
+      <% if session[:user_id] %>
+			<li class="HomeButton"><a class="waves-effect waves-light btn" href="/profile/<%=current_user.id%>">My Profile</a></li>
+			<% elsif session[:vet_id] %>
+			<li class="HomeButton"><a class="waves-effect waves-light btn" href="/vet_profile/<%=current_user.id%>">My Profile</a></li>
+			<% end %>
     </ul>
     <ul class="right"> 
     	<li>
-		  <form action='/sessions/logout' method='post'>
+		  <form action='/sessions/logout' method='post' class="logOut">
 		    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
 		    <input type='hidden' name='_method' value='delete'>
-		    <input class="waves-effect waves-light btn small-btn" type='submit' value='Log Out'>
+		    <input class="waves-effect waves-light btn small-btn" id="logOut1" type='submit' value='Log Out'>
 		  </form>
 		</li>
     </ul>
@@ -56,7 +60,7 @@
 	<!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
   <li><a href="/sessions/new">Owner</a></li>
-  <li><a href="/sessions/doc-new/">Vet Office</a></li>
+  <li><a href="/sessions/vet_new/">Vet Office</a></li>
 </ul>
   <div id="log1" class="modal modalIn">
 	<div class="row login11">

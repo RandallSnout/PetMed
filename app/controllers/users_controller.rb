@@ -6,6 +6,20 @@ class UsersController < ApplicationController
 	def users_profile
 	end
 
+	def redirect
+		@user = User.find(params[:id]) 
+		if @user
+		redirect_to "/users/#{@user.id}"
+    end
+	end
+
+	def vet_redirect
+		@vet = Vet.find(params[:id])
+		if @vet 
+		redirect_to "/vets/#{@vet.id}"
+		end
+	end
+
 	def update_user_page
 		if !session[:phone]
 		session[:phone] = 0
@@ -42,18 +56,17 @@ class UsersController < ApplicationController
 	def create_user
 		user = User.new(user_params)
 		address = Address.new(address_params)
-    if user && address.save
-    	user.address_id = address.id
-    	user.save
-      session[:user_id] = user.id
-      redirect_to "/users/#{user.id}"
-    else
-      flash[:error] = user.errors.full_messages
-      redirect_to :back
-   end
-  end
+	    if user && address.save
+	    	user.address_id = address.id
+	    	user.save
+	      session[:user_id] = user.id
+	      redirect_to "/users/#{user.id}"
+	    else
+	      flash[:error] = user.errors.full_messages
+	      redirect_to :back
+	    end
+  	end
 
-# the users parameters are wrong since we havent set how to find the specific user yet
 	def update_user
 		if !params[:phone_number_update].empty?
 			u = User.find(current_user.id)
@@ -85,22 +98,6 @@ class UsersController < ApplicationController
 				redirect_to :back
 			end	
 		end
-	end
-
-	def update_without_phone
-		u = User.find(current_user.id)
-
-
-		# u.update(first_name:params[:first_name_update], last_name:params[:last_name_update], email:params[:email_update], phone_number:params[:phone_number_update])
-
-		u.update(phone_number: "0")
-		if u.save
-			puts "yay"
-		else
-			puts "error"
-		end
-		redirect_to "/users/#{current_user.id}"
-
 	end
 
 	def update_user_pic
