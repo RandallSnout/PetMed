@@ -1,15 +1,40 @@
-<div>
+<div class="row">
+<div class="col s6">
 <!-- need to fill in the all the ruby tags with current user information -->
-	<form action="/users/update/<%= @user.id %>" method="post">
+	<form action="/users/update/<%= @user.id %>" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 		<input type="hidden" name="_method" value="patch">
-		First Name: <input type="text" name="vet_first_name_update" value="<%= @user.first_name%>">
-		Last Name: <input type="text" name="vet_last_name_update" value="<%= @user.last_name%>">
-		Email: <input type="text" name="vet_email_update" value="<%=@user.email%>">
+		<div class="row">	
+			<div class="col s2">
+				<% if @user.avatar_file_name != nil %>
+			      	<%= image_tag @user.avatar.url %>
+			    <% else %>
+			      	<%= image_tag "profile-holder" %>
+			    <% end %>
+		    </div>
+		    <div class="col s8">
+		    	<div class="row">
+					<label for="pet_pic">Profile Picture:</label> 
+				</div>
+				<div class="row">
+					<input id="pet_pic" type="file" name="avatar">
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<label>First Name:</label> 
+		<input type="text" name="vet_first_name_update" value="<%= @user.first_name%>">
+		<label>Last Name:</label> 
+		<input type="text" name="vet_last_name_update" value="<%= @user.last_name%>">
+		<label>Email:</label> 
+		<input type="text" name="vet_email_update" value="<%=@user.email%>">
 		<p>Address:</p>
-			Street: <input type="text" name="street_update" value="<%= @address.street %>"> 
-			City: <input type="text" name="city_update" value=" <%= @address.city %>">	
-			State: <select class="browser-default" name="state_update">
+			<label>Street:</label> 
+			<input type="text" name="street_update" value="<%= @address.street %>"> 
+			<label>City:</label>
+			<input type="text" name="city_update" value=" <%= @address.city %>">	
+			<label>State:</label>
+			<select class="browser-default" name="state_update">
 	        		<option selected="selected"><%= @address.state %></option> 
 					<option value="AL">Alabama</option>
 					<option value="AK">Alaska</option>
@@ -63,7 +88,9 @@
 					<option value="WI">Wisconsin</option>
 					<option value="WY">Wyoming</option>
 				   </select>
-			Zip Code: <input type="number" name="zip_update" value="<%= @address.zip%>">
-		<input type="submit" value="Update Records">
+			<label>Zip Code:</label>
+			<input type="number" name="zip_update" value="<%= @address.zip%>">
+		<input class="waves-effect waves-light btn" type="submit" value="Update Records">
 	</form>
+</div>
 </div>

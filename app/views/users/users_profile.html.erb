@@ -37,7 +37,7 @@
 		<p><%= @user.street %></p>
 		<p><%= @user.city %>, <%= @user.state %></p>
 		<p>My Doctor is: <a href="/vets/public/3">Dr. Turtles</a></p>
-		<a class="waves-effect waves-light btn" href="/new/pet">Edit Your Profile</a>
+		<a class="waves-effect waves-light btn" href="/update/user/<%= current_user.id %>">Edit Your Profile</a>
 		<a class="waves-effect waves-light btn" href="/new/pet">Add New Pet</a>
 	</div>
 </div>
