@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 	end
 
 	def vet_profile 
-		@vet = Vet.find(current_user.id)
+		@vet = Vet.find(params[:id])
 		@clients = User.joins(:address).select("first_name", "last_name", "email", "address_id as U_address", :street, :city, :state, :zip)
 		@pet = Pet.joins(:user).select("name", "sex", "species", "age", "user_id as owner", :first_name,  :last_name)
 	end
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
 # ------------------------------------------------
 
 	def update_vet_page
-		@user = current_user
+		
 	end
 
 # the address parameters are wrong since we havent set how to find the specific addresses yet
