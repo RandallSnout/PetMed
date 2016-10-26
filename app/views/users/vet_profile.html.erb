@@ -6,37 +6,35 @@
 
 	<div class="col s9">
 		<h3>Welcome Dr. <%= @vet.first_name %> <%= @vet.last_name %></h3>
-		<h3>Here are your clients</h3>
-
-		<table>
-			<tr>
-				<td>Name</td>
-				<td>Address</td>
-				<td>Pets</td>
-			</tr>
-			<% @clients.each do |c| %>
-				<td><%= c.first_name + " " + c.last_name %></td>
-				<td><%= c.street %>" "<%= c.city %>" "<%=  c.state %>" "<%=  c.zip %></td>
-				<% end %>
-				<% @pet.each do |p| %>
-					<div class="card-reveal">
-					
-				      	<span class="card-title grey-text text-darken-4"><i class="material-icons right">X</i></span>
-
-					
-				      	<!-- list of all the clients pets -->
-				      	<p>Owner: <%=  p.first_name %> <%=  p.last_name %></p> 
-
-				      	<!-- links to the pet's profile -->
-				      	<p>Pet: <a href=""><%= p.name %></a></p>
-				      	<p>Species: <%=  p.species %></p> 
-						
-				    </div>
-				</td>
-			<% end %>
-		</table>
-
-		<a href="/update/vet/<%= current_user.id %> ">Update Your Profile</a>
+		<h4>Office: <%= @vet.office_name %></h4>
+		<h4>Phone: <%= @vet.phone_number %></h4>
+		<h4>Address:</h4>
+		<div class="col s11 offset-s1">
+		<h5><%= @vet.street %></h5>
+		<h5><%= @vet.city %>, <%= @vet.state %> <%= @vet.zip %></h5>
+		</div>
+		<a class="waves-effect waves-light btn" href="/update/vet/<%= current_user.id %> ">Update Your Profile</a>
 	</div>
+</div>
+<div class="clear"></div>
+<div class="row">
+	<h3>My Clients</h3>
+      <table>
+        <thead>
+          <tr>
+              <th data-field="id">Client</th>
+              <th data-field="name">Phone Number</th>
+              <th data-field="price">Email</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+          </tr>
+        </tbody>
+      </table>
 </div>
 
