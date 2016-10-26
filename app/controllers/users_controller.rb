@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 	end
 
 	def users_profile 
-		@user = User.joins(:address).select("first_name", "last_name", "street", "state", "city", "zip").find(current_user.id)
+		@user = User.joins(:address).select("first_name", "last_name", "street", "state", "city", "zip", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at").find(current_user.id)
 		@pets = Pet.where("user_id = #{current_user.id}")
 	end
 
@@ -66,6 +66,14 @@ class UsersController < ApplicationController
 			
 	end
 
+	def update_user_pic
+		if params[:avatar]
+			User.find(current_user.id).update(avatar: params[:avatar])
+			redirect_to "/users/#{current_user.id}"
+		else
+			redirect_to "/users/#{current_user.id}"
+		end
+	end
 # ------------------------------------------------
 
 	def update_vet_page
@@ -85,7 +93,7 @@ class UsersController < ApplicationController
 
 	private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, ) 
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar) 
   end
 
   	private

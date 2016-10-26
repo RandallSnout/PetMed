@@ -1,13 +1,43 @@
+<div id="profile-pic" class="modal">
+    <div class="modal-content2">
+	    <h4>Edit Profile Picture</h4>
+	    <div class="row">
+	    <div class="col s2">
+			<% if @user.avatar_file_name != nil %>
+		    	<%= image_tag current_user.avatar.url %>
+		    <% else %>
+		    	<%= image_tag "profile-holder" %>
+		    <% end %>
+		</div>
+			 
+		</div>
+		<div class="col s8">
+			<div class="row">
+			<p>Profile Picture:</p>
+				<form action="/users/profilePic/<%= current_user.id %>" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<input type="hidden" name="_method" value="patch">
+					<input id="user_pic" type="file" name="avatar">
+					<input class=" modal-action waves-effect waves-green btn-flat" type="submit" value="Update">
+				</form>
+			</div>
+		</div>
+	</div>
+    <div class="modal-footer">
+  		<a class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
 <div class="row">
 	<div class="col s3 profile">
-		<a href="/update/user/<%= current_user.id %>">
-		<%= image_tag "profile-holder" %></a>
+		<a class="new-pic" href="#profile-pic">
+		<%= image_tag current_user.avatar.url %></a>
 	</div>
 	<div class="col s9">
 		<h3>Welcome <%= @user.first_name %> <%= @user.last_name %></h3>
 		<p><%= @user.street %></p>
 		<p><%= @user.city %>, <%= @user.state %></p>
 		<p>My Doctor is: <a href="/vets/public/3">Dr. Turtles</a></p>
+		<a class="waves-effect waves-light btn" href="/new/pet">Edit Your Profile</a>
 		<a class="waves-effect waves-light btn" href="/new/pet">Add New Pet</a>
 	</div>
 </div>
