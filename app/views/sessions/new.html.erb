@@ -1,16 +1,6 @@
+</div>
 
-
-<!--     <a class="modal-trigger waves-effect waves-light btn newbtn1" href="#modal1">Patient Registration</a> -->
-
-<!--     
-<div class="pt"><div class="ptcontent">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente odio inventore, sunt perferendis animi et, optio, recusandae, magni ipsum esse amet dicta maiores nam pariatur eum veritatis! Est velit voluptatibus veniam perspiciatis, quos optio, fugit quam reiciendis quasi tempore quis rerum. Accusamus pariatur sequi, impedit id, quos ducimus animi modi alias dolorum neque, repellendus cumque qui cum a, aspernatur optio.</p>
-</div> -->
-<!-- <a class="modal-trigger waves-effect waves-light btn newbtn1"><h5>Sign Up Now!</h5></a> -->
-
-    <!--User Registration-->
-<!-- <div id="modal1" class="modal">
-  <div class="modal-content">  -->
+<div class="fullbackground">
   <div class="andrew">
     <form class="col s12 form_u " action="/users/register" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -58,88 +48,15 @@
     </form>
   </div>
 
-
-    </div>
-<div class="center1 grey lighten-4">
-  <span class="span1"><% if flash[:errors] %>
-    <% flash[:error].each do |error| %>
-      <p class="error"> * <%=error%></p>
+  <div class="center1 grey lighten-4">
+    <span class="span1"><% if flash[:errors] %>
+      <% flash[:error].each do |error| %>
+        <p class="error"> * <%=error%></p>
+      <% end %>
     <% end %>
-  <% end %>
-  </span>
+    </span>
+  <div>
+    
+</div>
+
 <div>
-<!--   </div>
-</div> -->
-
-    <!--Doc Registration-->
-<!-- <div id="reg" class="modal">
-  <div class="modal-content">    
-    <form class="col s12 form_u " action="/users/register" method="post">
-    <input type="hidden" name="authenticity_token" value="< form_authenticity_token %>">
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Office Name" id="first_name" type="text" class="validate" name="office_name">
-          <label for="office_name">Office Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="DR.'s First Name" id="last_name" type="text" class="validate" name="first_name">
-          <label for="last_name">DR.'s First Name</label>
-        </div>
-      </div> 
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="DR.'s Last Name" id="last_name" type="text" class="validate" name="last_name">
-          <label for="last_name">DR.'s Last Name</label>
-        </div>
-      </div> 
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Email" id="email" type="email" class="validate" name="email">
-          <label for="email">Email</label>
-        </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Password" id="password" type="password" class="validate" name="password">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <label for="passConfirm">Password Confirmation</label>
-          <input id="passConfirm" type="password" name="password_confirmation">
-          <h5 class="h5l">Address</h5>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Street" id="street" type="text" class="validate" name="street">
-          <label for="street">Street</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="City" id="city" type="text" class="validate" name="city">
-          <label for="city">City</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="State" id="state" type="text" class="validate" name="state">
-          <label for="state">State</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Zip Code" id="zip" type="number" class="validate" name="zip">
-          <label for="zip">Zip Code</label>
-        </div>
-      </div>
-      <div class="modal-footer">
-      <input class="btn waves-light submit1" type="submit" value="Submit" >
-      </div>
-    </form>
-  </div>
-</div> -->
-

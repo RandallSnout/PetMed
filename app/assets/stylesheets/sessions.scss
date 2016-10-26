@@ -2,10 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.fullbackground {
+	z-index:0;
+	background-image: url('/assets/Background1.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
 .andrew {
 	width: 500px;
     background: rgba(255, 255, 255, 0.3);
-    color: white !important;
     padding-top: 20px;
     padding-bottom: 20px; 
 
@@ -21,10 +28,6 @@
 
 .pt {
 	display: block;
-}
-
-ul {
-	width: 500px; 
 }
 
 .center1 {
@@ -84,7 +87,7 @@ ul {
 }
 
 .h5l {
-	margin-left: 82px;
+	margin-left: 183px;
 	color: #7d7c7c;
 }
 
