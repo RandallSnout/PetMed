@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 	end
 
 	def users_profile 
-		@user = User.joins(:address).select("first_name", "last_name", "street", "state", "city").find(current_user.id)
+		@user = User.joins(:address).select("first_name", "last_name", "street", "state", "city", "zip").find(current_user.id)
 		@pets = Pet.where("user_id = #{current_user.id}")
 	end
 
@@ -25,10 +25,10 @@ class UsersController < ApplicationController
 		vet = Vet.new(vet_params)
 		address = Address.new(address_params)
     if  vet && address.save
-      	vet.address_id = vet.id
+      	vet.address_id = address.id
       	vet.save
         session[:vet_id] = vet.id
-        redirect_to "/vet/#{vet.id}"
+        redirect_to "/vets/#{vet.id}"
      else
         flash[:error] = vet.errors.full_messages
         redirect_to :back
@@ -64,6 +64,10 @@ class UsersController < ApplicationController
 		
 	end
 
+	def vet_show
+		@vet = Vet.joins(:address).select("first_name", "last_name","email","office_name", "street", "state", "city", "zip").find(params[:id])
+		
+	end
 # the address parameters are wrong since we havent set how to find the specific addresses yet
 	def update_vet
 		vet_update = Vet.find().update(first_name:params[:vet_first_name_update], last_name:params[:vet_last_name_update], email:params[:vet_email_update])

@@ -7,7 +7,7 @@
 		<h3>Welcome <%= @user.first_name %> <%= @user.last_name %></h3>
 		<p><%= @user.street %></p>
 		<p><%= @user.city %>, <%= @user.state %></p>
-		<p>My Doctor is: Dr. Jim</p>
+		<p>My Doctor is: <a href="/vets/public/3">Dr. Turtles</a></p>
 		<a class="waves-effect waves-light btn" href="/new/pet">Add New Pet</a>
 	</div>
 </div>
@@ -29,12 +29,15 @@
 	    </div>
 	    <div class="card-reveal">
 	      <span class="card-title grey-text text-darken-4"><%= pet.name %><i class="material-icons right">X</i></span>
-	      <p>Randalls Profile</p>
+	      <p><%= pet.name %>s Profile</p>
 	      <ul>
+	      	<li>PIN #: <%= pet.pin %></li>
 	      	<li>Species: <%= pet.species %></li>
+	      	<li>Breed: <%= pet.breed %></li>
 	      	<li>Sex: <%= pet.sex %></li>
 	      	<li>Color: <%= pet.color %></li>
 	      	<li>Age: <%= pet.age %> years</li>
+	      	<li><a href="/update/pet/<%= pet.id %>">Edit Pet Profile</a></li>
 	      </ul>
 	    </div>
 	  </div>

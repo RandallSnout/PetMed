@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 # ------- [get] ----------------------------
 
 
-  get '/update/user' => 'users#update_user_page'
+  get '/update/user/:id' => 'users#update_user_page'
 
   get '/update/vet' => 'users#update_vet_page'
 
@@ -32,16 +32,18 @@ Rails.application.routes.draw do
 
   get "vets/:id" => "users#vets_profile"
 
+  get "vets/public/:id" => "users#vet_show"
+
   get '/users/:id' => 'users#users_profile'
 
-  get '/update/pet/:id' => 'pet#update_pet_page'
+  get '/update/pet/:id' => 'pets#pet_update_page'
 
 # ------- [patch] ----------------------------
   patch '/users/update/:id' => 'users#update_user'
 
   patch '/vet/update/:id' => 'users#update_vet'
 
-  patch '/pet/update/:id' => 'pet#update'
+  patch '/pet/update/:id' => 'pets#update'
 
 # ------- [destroy] ----------------------------
 	delete 'sessions/logout' => 'sessions#destroy'
