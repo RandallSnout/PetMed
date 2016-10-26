@@ -13,7 +13,7 @@
 
 .fullbackground2 {
 	z-index:0;
-	background-image: url('/assets/Background1.jpg');
+	background-image: url('/assets/BackgroundRes.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding-top: 5px;
@@ -30,12 +30,15 @@
 }
 .andrew2 {
 	width: 500px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.7);
     padding-top: 5px;
     padding-bottom: 20px;
     margin-left: 37%; 
-
 }
+
+form, input, label {
+	    color: black !important;
+} 
 
 .newbtn1 {
     margin-left: 419px;
@@ -122,6 +125,7 @@
 }
 .submit1 {
     margin: 6px 34% !important;
+    color: white !important;
 
 }
 

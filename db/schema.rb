@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20161026015945) do
     t.string   "name"
     t.string   "sex"
     t.string   "species"
-    t.string   "breed"
     t.float    "age"
     t.string   "color"
     t.integer  "user_id"
@@ -37,6 +36,7 @@ ActiveRecord::Schema.define(version: 20161026015945) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "breed"
   end
 
   add_index "pets", ["user_id"], name: "index_pets_on_user_id"

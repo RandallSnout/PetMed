@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       	vet.address_id = vet.id
       	vet.save
         session[:vet_id] = vet.id
-        redirect_to "/vet/profile"
+        redirect_to "/vet/#{vet.id}"
      else
         flash[:error] = vet.errors.full_messages
         redirect_to :back
