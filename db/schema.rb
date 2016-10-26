@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026181920) do
+ActiveRecord::Schema.define(version: 20161026202349) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20161026181920) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "phone_number"
+    t.string   "phone_number"
   end
 
   add_index "users", ["address_id"], name: "index_users_on_address_id"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20161026181920) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "phone_number"
+    t.string   "phone_number"
   end
 
   add_index "vets", ["address_id"], name: "index_vets_on_address_id"

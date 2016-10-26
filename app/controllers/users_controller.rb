@@ -7,12 +7,15 @@ class UsersController < ApplicationController
 	end
 
 	def update_user_page
+		if !session[:phone]
+		session[:phone] = 0
+		end
 		@user = current_user
 		@address = Address.find(current_user.id)
 	end
 
 	def users_profile 
-		@user = User.joins(:address).select("first_name", "last_name", "street", "state", "city", "zip", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at").find(current_user.id)
+		@user = User.joins(:address).select("first_name", "last_name", "street", "state", "city", "zip", "avatar_file_name").find(current_user.id)
 		@pets = Pet.where("user_id = #{current_user.id}")
 	end
 
@@ -52,18 +55,52 @@ class UsersController < ApplicationController
 
 # the users parameters are wrong since we havent set how to find the specific user yet
 	def update_user
-		u = User.find(current_user.id)
-		u.update(first_name:params[:first_name_update], last_name:params[:last_name_update], email:params[:email_update]) 
-		a = Address.find(current_user.id)
-		a.update(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
-		if a.valid? && u.valid?
-			a.save && u.save
-			redirect_to '/users/#{current_user.id}' 
-		else 
-			flash[:owner_err] = a.errors.full_messages && u.errors.full_messages
+		if !params[:phone_number_update].empty?
+			u = User.find(current_user.id)
+			u.update(first_name:params[:first_name_update], last_name:params[:last_name_update], email:params[:email_update], phone_number:params[:phone_number_update]) 
+			a = Address.find(current_user.id)
+			a.update(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
+			if a.valid? && u.valid?
+				a.save && u.save
+				redirect_to "/users/#{current_user.id}"
+			else 
+				flash[:owner_err] = a.errors.full_messages && u.errors.full_messages
+				redirect_to :back
+			end	
+		elsif session[:phone] == 0 && params[:phone_number_update].empty?
+			flash[:are_you_sure] = "You vet will be able to contact you more better if you give you phone number.  Are you sure you wanna continyou?"
+			session[:phone] = 1
 			redirect_to :back
+		elsif session[:phone] == 1
+			u = User.find(current_user.id)
+			u.update(first_name:params[:first_name_update], last_name:params[:last_name_update], email:params[:email_update], phone_number:params[:phone_number_update]) 
+			a = Address.find(current_user.id)
+			a.update(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
+			if a.valid? && u.valid?
+				a.save && u.save
+				session[:phone] = 0
+				redirect_to "/users/#{current_user.id}"
+			else 
+				flash[:owner_err] = a.errors.full_messages && u.errors.full_messages
+				redirect_to :back
+			end	
 		end
-			
+	end
+
+	def update_without_phone
+		u = User.find(current_user.id)
+
+
+		# u.update(first_name:params[:first_name_update], last_name:params[:last_name_update], email:params[:email_update], phone_number:params[:phone_number_update])
+
+		u.update(phone_number: "0")
+		if u.save
+			puts "yay"
+		else
+			puts "error"
+		end
+		redirect_to "/users/#{current_user.id}"
+
 	end
 
 	def update_user_pic

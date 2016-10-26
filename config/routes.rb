@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 # -------[main user page and update]----------------------------- 
   get "/users/:id" => "users#users_profile"
   get '/update/user/:id' => 'users#update_user_page'
+  get '/users/bypass/:id' => 'users#update_without_phone'
   
 # -------[pet register/update/profile]---------------------------
   get '/new/pet' => 'pets#new'

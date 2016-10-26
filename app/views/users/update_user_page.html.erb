@@ -1,5 +1,7 @@
-<% if flash[:owner_err] %>
-	<p><%= flash[:owner_err] %></p>
+<% if flash[:are_you_sure] %>
+	<p><%= flash[:are_you_sure] %></p>
+	<a href="/users/bypass/<%= current_user.id %>">Yes</a>
+	<a href="/update/user/<%= current_user.id %>">No</a>
 <% end %>
 
 <div class="col s6">
@@ -30,6 +32,8 @@
 		<input type="text" name="last_name_update" value="<%= @user.last_name%>">
 		<label>Email:</label> 
 		<input type="text" name="email_update" value="<%=@user.email%>">
+		<label>Phone Number:</label>
+		<input type="number" name="phone_number_update" value="<%= @user.phone_number%>">
 		<p>Address:</p>
 			<label>Street:</label> 
 			<input type="text" name="street_update" value="<%= @address.street %>"> 

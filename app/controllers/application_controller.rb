@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_phone
+      session[:check_if_phone_is_blank] = false
+  end
+
   def require_login
     redirect_to '/' if session[:user_id] == nil
   end

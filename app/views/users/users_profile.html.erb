@@ -3,11 +3,12 @@
 	    <h4>Edit Profile Picture</h4>
 	    <div class="row">
 	    <div class="col s2">
-			<% if @user.avatar_file_name != nil %>
-		    	<%= image_tag current_user.avatar.url %>
-		    <% else %>
-		    	<%= image_tag "profile-holder" %>
-		    <% end %>
+	    <!-- <h1><%= current_user.avatar.url %></h1> -->
+	      <% if @user.avatar_file_name %>
+	      	<%= image_tag @user.avatar.url %>
+	      <% else %>
+	      	<%= image_tag "profile-holder" %>
+	      <% end %>
 		</div>
 			 
 		</div>
@@ -30,14 +31,17 @@
 <div class="row">
 	<div class="col s3 profile">
 		<a class="new-pic" href="#profile-pic">
-		<%= image_tag current_user.avatar.url %></a>
+	      <% if @user.avatar_file_name %>
+	      	<%= image_tag @user.avatar.url %>
+	      <% else %>
+	      	<%= image_tag "profile-holder" %>
+	      <% end %></a>
 	</div>
 	<div class="col s9">
 		<h3>Welcome <%= @user.first_name %> <%= @user.last_name %></h3>
 		<p><%= @user.street %></p>
 		<p><%= @user.city %>, <%= @user.state %></p>
 		<p>My Doctor is: <a href="/vets/public/3">Dr. Turtles</a></p>
-		<a class="waves-effect waves-light btn" href="/update/user/:id">Edit Your Profile</a>
 		<a class="waves-effect waves-light btn" href="/update/user/<%= current_user.id %>">Edit Your Profile</a>
 		<a class="waves-effect waves-light btn" href="/new/pet">Add New Pet</a>
 	</div>
@@ -48,7 +52,7 @@
 	<div class="col s3">
 	  <div class="card">
 	    <div class="card-image waves-effect waves-block waves-light">
-	      <% if pet.avatar_file_name != nil %>
+	      <% if pet.avatar_file_name %>
 	      	<%= image_tag pet.avatar.url %>
 	      <% else %>
 	      	<%= image_tag "profile-holder" %>
