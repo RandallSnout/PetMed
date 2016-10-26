@@ -8,13 +8,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 <body>
-	<!-- Dropdown Structure -->
+<!-- logged In -->
+<% if current_user %>
 <ul id="dropdown1" class="dropdown-content">
   <li><a href="/sessions/new">Owner</a></li>
   <li><a href="/sessions/doc-new/">Vet Office</a></li>
 </ul>
-  <div id="log1" class="modal">
-	<div class="row">
+  <div id="log1" class="modal modalIn">
+	<div class="row login11">
 		<div class="col s12">
 			  <form action="/sessions/signin" method="post">
 				  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
@@ -23,7 +24,51 @@
 				  <label for="Password">Password</label>
 					<input id="Password" type="password" name="password" placeholder="Password">
 					<div class="col s6 offset-s3">
-					<input class="waves-effect waves-light btn small-btn" type="submit" value="Log In">
+					<input class="waves-effect waves-light btn small-btn logBT" id="LogBT" type="submit" value="Log In">
+					</div>
+			  </form>
+		</div>
+	 </div>
+  </div>
+<nav>
+  <div class="nav-wrapper indigo">
+  <div class="container">
+    <a href="/" class="brand-logo">Pet Med</a>
+    <ul class="left hide-on-med-and-down margin-left">
+      <li><a href="/">Home</a></li>
+      <li><a href="/pages/about">About</a></li>
+      <li><a href="/pages/finder">Find Vet</a></li>
+			<li><a href="/">My Profile</a></li>
+    </ul>
+    <ul class="right"> 
+    	<li>
+		  <form action='/sessions/logout' method='post'>
+		    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+		    <input type='hidden' name='_method' value='delete'>
+		    <input class="waves-effect waves-light btn small-btn" type='submit' value='Log Out'>
+		  </form>
+		</li>
+    </ul>
+  </div>
+</nav>
+	<!--Logged out-->
+	<% else %>
+	<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="/sessions/new">Owner</a></li>
+  <li><a href="/sessions/doc-new/">Vet Office</a></li>
+</ul>
+  <div id="log1" class="modal modalIn">
+	<div class="row login11">
+		<div class="col s12">
+			  <form action="/sessions/signin" method="post">
+				  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
+				  <label for="Email">Email</label>
+					<input id="Email" type="email" name="email" placeholder="Email">
+				  <label for="Password">Password</label>
+					<input id="Password" type="password" name="password" placeholder="Password">
+					<div class="col s6 offset-s3">
+					<input class="waves-effect waves-light btn small-btn logBT" id="LogBT" type="submit" value="Log In">
 					</div>
 			  </form>
 		</div>
@@ -54,6 +99,7 @@
     </ul>
   </div>
 </nav>
+<% end %>
 	<div class="container">
 		<%= yield %>
 	</div>
