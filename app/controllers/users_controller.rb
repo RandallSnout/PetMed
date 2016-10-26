@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 			a.save && u.save
 			redirect_to '/users/current_user.id' 
 		else 
-			flash[:owner_err] = "This doesn't work"
+			flash[:owner_err] = a.errors.full_messages && u.errors.full_messages
 			redirect_to :back
 		end
 			
