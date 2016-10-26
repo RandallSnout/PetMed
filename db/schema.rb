@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 20161026204614) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "phone_number"
     t.integer  "vet_id"
+    t.string   "phone_number"
   end
 
   add_index "users", ["address_id"], name: "index_users_on_address_id"

@@ -34,8 +34,8 @@ class UsersController < ApplicationController
 	end
 
 	def vet_profile 
-		@vet = Vet.find(params[:id])
-		@clients = User.joins(:address).select("first_name", "last_name", "email", "address_id as U_address", :street, :city, :state, :zip)
+		@vet = Vet.joins(:address).select(:first_name, :last_name, :office_name, :phone_number, :email, :street, :city, :state, :zip).find(params[:id])
+		@clients = User.joins(:address).select("first_name", "last_name", "phone_number", "email", "address_id as U_address", :street, :city, :state, :zip)
 		@pet = Pet.joins(:user).select("name", "sex", "species", "age", "user_id as owner", :first_name,  :last_name)
 	end
 
