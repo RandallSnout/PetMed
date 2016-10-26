@@ -75,7 +75,6 @@ class UsersController < ApplicationController
 			flash[:owner_err] = a.errors.full_messages && u.errors.full_messages
 			redirect_to :back
 		end
-			
 	end
 
 	def update_user_pic
