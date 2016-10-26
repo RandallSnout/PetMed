@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 # ------- [get] ----------------------------
 
 
-  get '/update/user' => 'users#update_user_page'
+  get '/update/user/:id' => 'users#update_user_page'
 
   get '/update/vet' => 'users#update_vet_page'
 

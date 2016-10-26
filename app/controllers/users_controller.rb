@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
 	def update_user_page
 		@user = current_user
+		@address = Address.find(current_user.id)
 	end
 
 	def users_profile 
