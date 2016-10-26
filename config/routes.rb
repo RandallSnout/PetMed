@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post "pets/create" => "pets#create"
 # -------[Both User and Vet Redirect]----------------------
 	get "profile/:id" => "users#redirect"
+	get "vet_profile/:id" => "users#vet_redirect"
 
 # -------[vet main profile page and update]----------------------
   get "vets/:id" => "users#vet_profile"
@@ -29,8 +30,8 @@ Rails.application.routes.draw do
   get '/update/vet/:id' => 'users#update_vet_page'
 
 # -------[main user page and update]----------------------------- 
-  get "/users/:id" => "users#users_profile"
-  get '/update/user/:id' => 'users#update_user_page'
+  get "users/:id" => "users#users_profile"
+  get "update/user/:id" => "users#update_user_page"
   
 # -------[pet register/update/profile]---------------------------
   get '/new/pet' => 'pets#new'

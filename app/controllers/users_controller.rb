@@ -7,15 +7,17 @@ class UsersController < ApplicationController
 	end
 
 	def redirect
-		if Vet.find(params[:id])
-		@vet = Vet.find(params[:id]) 
-		redirect_to "/vets/#{current_user.id}"
-		elsif User.find(params[:id])
 		@user = User.find(params[:id]) 
-		redirect_to "/users/#{current_user.id}" 
-		else
-		redirect_to "/"
+		if @user
+		redirect_to "/users/#{@user.id}"
     end
+	end
+
+	def vet_redirect
+		@vet = Vet.find(params[:id])
+		if @vet 
+		redirect_to "/vets/#{@vet.id}"
+		end
 	end
 
 	def update_user_page

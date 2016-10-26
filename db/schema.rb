@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< Updated upstream
-ActiveRecord::Schema.define(version: 20161026181920) do
-=======
 ActiveRecord::Schema.define(version: 20161026204614) do
->>>>>>> Stashed changes
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -57,11 +53,8 @@ ActiveRecord::Schema.define(version: 20161026204614) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-<<<<<<< Updated upstream
     t.integer  "phone_number"
-=======
     t.integer  "vet_id"
->>>>>>> Stashed changes
   end
 
   add_index "users", ["address_id"], name: "index_users_on_address_id"
