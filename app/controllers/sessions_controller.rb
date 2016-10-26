@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 			redirect_to "/users/#{@user.id}"
 		elsif @vet
 			@vet && @vet.authenticate(params[:password])
-			session[:lender_id] = @vet.id
+			session[:vet_id] = @vet.id
 			redirect_to "/vet/#{@vet.id}"
 		else
 			flash[:error] = "Invalid Login"
