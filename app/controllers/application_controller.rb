@@ -38,8 +38,8 @@ class ApplicationController < ActionController::Base
       user = User.find(params[:id])
       redirect_to "/user/#{current_user.id}" if current_user != user
     else
-      user = Vet.find(params[:id]) 
-      redirect_to "/vet/#{current_user.id}" if current_user != user
+      vet = Vet.find(params[:id]) 
+      redirect_to "/vet/#{current_user.id}" if current_user != vet
     end
   end
   def require_login
