@@ -14,6 +14,20 @@
 	display: block;
 }
 
+ul {
+	width: 500px; 
+}
+
+.center1 {
+	width: 500px !important;
+}
+
+.compress1 {
+	width: 500px !important;
+    margin-left: 200px;
+    margin-top: -200px;
+}
+
 .ptcontent {
     width: 742px;
     height: 450px;
@@ -22,6 +36,17 @@
     padding: 0px;
     margin-left: 199px;
     margin-top: 129px;
+    padding: 20px;
+}
+
+.ptcontent1 {
+	width: 742px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0px;
+    padding: 0px;
+    margin-left: 714px;
+    margin-top: 20px;
     padding: 20px;
 }
 

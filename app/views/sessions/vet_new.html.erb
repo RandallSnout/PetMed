@@ -1,0 +1,218 @@
+
+<div class="row">
+         <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix"></i>
+                <input  id="name" type="text" class="active validate" required>
+                <label for="name">Office Name</label>
+              </div>
+              <div class="input-field col s6">
+                  <i class="material-icons prefix"></i>
+                  <input id="name" type="text" class="active validate" required>
+                  <label for="name">Dr's First Name</label>
+               </div>
+               <div class="input-field col s6">
+                <i class="material-icons prefix"></i>
+                <input id="name" type="text" class="active validate" required>
+                <label for="name">Dr's Last Name</label>
+              </div>
+               <div class="input-field col s6">
+                  <input id="email" type="email" class="validate">
+                  <label for="email">Email</label>
+               </div>
+               <div class="input-field col s6">      
+                  <label for="password">Password</label>
+                  <input id="password" type="password" placeholder="Password" class="validate" required>          
+               </div>
+               <div class="input-field col s6">      
+                  <label for="password">Password</label>
+                  <input id="password" type="password" placeholder="Password" class="validate" required>          
+               </div>
+            <div class="row">
+               <div class="input-field col s12">
+            <i class="material-icons prefix"></i>
+                  <textarea id="address" class="materialize-textarea"></textarea>
+                  <label for="address">Address</label>
+               </div>
+            </div>      
+            <div class="row">
+               <div class="input-field col s12">
+                  <input placeholder="Comments (Disabled)" id="comments" type="text"  disabled>
+                  <label for="comments">Comments</label>
+               </div>
+            </div>
+            <div class="row">
+               <div class="input-field col s12">
+                  <p>
+                     <input id="married" type="checkbox" checked="checked">
+                     <label for="married">Married</label>
+                  </p>
+                  <p>
+                     <input id="single" type="checkbox" class="filled-in" >
+                     <label for="single">Single</label>
+                  </p>
+                  <p>
+                     <input id="dontknow" type="checkbox" disabled="disabled">              
+                     <label for="dontknow">Don't know (Disabled)</label>
+                  </p>
+               </div>
+            </div>
+            <div class="row">
+               <div class="input-field col s12">
+                   <p>
+                     <input id="male" type="radio" name="gender" value="male" checked>
+                     <label for="male">Male</label>
+                  </p>
+                  <p>
+                     <input id="female" type="radio" name="gender" value="female" checked>
+                     <label for="female">Female</label>
+                  </p>
+                  <p>
+                     <input id="dontknow1" type="radio" name="gender" value="female" disabled>                  
+                     <label for="dontknow1">Don't know (Disabled)</label>
+                  </p>
+               </div>
+            </div>           
+         </form>       
+      </div>
+
+
+<!-- <div class="pt">
+  <div class="ptcontent1">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente odio inventore, sunt perferendis animi et, optio, recusandae, magni ipsum esse amet dicta maiores nam pariatur eum veritatis! Est velit voluptatibus veniam perspiciatis, quos optio, fugit quam reiciendis quasi tempore quis rerum. Accusamus pariatur sequi, impedit id, quos ducimus animi modi alias dolorum neque, repellendus cumque qui cum a, aspernatur optio.</p>
+  </div>
+</div>
+<!--   <a class="modal-trigger waves-effect waves-light btn newbtn1" href="#modal1"><h5>Sign Up Now!</h5></a> -->
+
+<!-- <div class="center1 grey lighten-4">
+  <span class="span1"><% if flash[:errors] %>
+    <% flash[:error].each do |error| %>
+      <p class="error"> * <%=error%></p>
+    <% end %>
+  <% end %>
+  </span>
+<div>
+
+<div class="compress1">
+<ul class="collapsible" data-collapsible="accordion">
+  <li>
+    <div class="collapsible-header"><i class="material-icons"></i>Doctor's Registration</div>
+    <div class="collapsible-body">
+      <form class="col s12 form_u " action="/users/register" method="post">
+      <input type="hidden" name="authenticity_token" value="< form_authenticity_token %>">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate" name="vet[office_name]">
+          <label for="office_name">Office Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate" name="vet[first_name]">
+          <label for="last_name">DR.'s First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate" name="vet[last_name]">
+          <label for="last_name">DR.'s Last Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="email" type="email" class="validate" name="vet[email]">
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="password" type="password" class="validate" name="vet[password]">
+          <label for="password">Password</label>
+        </div>
+        <div class="input-field col s6">
+          <label for="passConfirm">Password Confirmation</label>
+          <input id="passConfirm" type="password" name="password_confirmation">
+        </div>
+    </div>
+  </li>
+  <li>
+    <div class="collapsible-header"><i class="material-icons"></i>Address</div>
+    <div class="collapsible-body">
+        <div class="input-field col s6">
+          <input id="street" type="text" class="validate" name="vet[street]">
+          <label for="street">Street</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="city" type="text" class="validate" name="vet[city]">
+          <label for="city">City</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="state" type="text" class="validate" name="vet[state]">
+          <label for="state">State</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="zip" type="number" class="validate" name="vet[zip]">
+          <label for="zip">Zip Code</label>
+        </div>
+    </div>
+  </li>
+        <input class="btn waves-light submit1" type="submit" value="Submit" >
+      </form>
+</div> --> -->
+
+    <!--VETS Registration-->
+<!-- <div id="modal1" class="modal">
+  <div class="modal-content">    
+    <form class="col s12 form_u " action="/users/register" method="post">
+    <input type="hidden" name="authenticity_token" value="< form_authenticity_token %>">
+
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate" name="vet[office_name]">
+          <label for="office_name">Office Name</label>
+        </div>
+
+
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate" name="vet[first_name]">
+          <label for="last_name">DR.'s First Name</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate" name="vet[last_name]">
+          <label for="last_name">DR.'s Last Name</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="email" type="email" class="validate" name="vet[email]">
+          <label for="email">Email</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="password" type="password" class="validate" name="vet[password]">
+          <label for="password">Password</label>
+        </div>
+
+        <div class="input-field col s6">
+          <label for="passConfirm">Password Confirmation</label>
+          <input id="passConfirm" type="password" name="password_confirmation">
+          <h5 class="h5l">Address</h5>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="street" type="text" class="validate" name="vet[street]">
+          <label for="street">Street</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="city" type="text" class="validate" name="vet[city]">
+          <label for="city">City</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="state" type="text" class="validate" name="vet[state]">
+          <label for="state">State</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="zip" type="number" class="validate" name="vet[zip]">
+          <label for="zip">Zip Code</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+      <input class="btn waves-light submit1" type="submit" value="vet[Submit]" >
+      </div>
+    </form>
+  </div>
+</div> -->
