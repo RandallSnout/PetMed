@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   get "sessions/new" => "sessions#new"
   get "sessions/doc-new/" => "sessions#vet_new"
   get "user/profile" => "users#users_profile"
-  get "users/:id" => "users#users_profile"
-  get "vets/:id" => "users#vets_profile"
 
 # ------- [post] ----------------------------
   post 'sessions/signin' => 'sessions#login'
@@ -16,13 +14,21 @@ Rails.application.routes.draw do
   post "pets/create" => "pets#create"
 
 # ------- [get] ----------------------------
-  get '/users/:id' => 'users#users_profile'
+
 
   get '/update/user' => 'users#update_user_page'
 
   get '/update/vet' => 'users#update_vet_page'
 
   get '/new/pet' => 'pets#new'
+
+  get '/pets/profile/:id' => 'pets#profile'
+
+  get "users/:id" => "users#users_profile"
+
+  get "vets/:id" => "users#vets_profile"
+
+  get '/users/:id' => 'users#users_profile'
 
   get '/update/pet/:id' => 'pet#update_pet_page'
 

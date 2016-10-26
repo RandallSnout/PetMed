@@ -1,6 +1,7 @@
 class PetsController < ApplicationController
 
-	def pet_main
+	def profile
+		@current = Pet.find(params[:id])
 	end
 	
 
@@ -13,7 +14,7 @@ class PetsController < ApplicationController
 
 	def create
 		pin = [*('a'..'z'),*('0'..'9')].shuffle[0,9].join
-		pet = Pet.new(name:params[:pet_name], sex:params[:pet_sex], species:params[:pet_species], age:params[:pet_age], color: params[:pet_color], pin: pin, user_id: current_user.id, avatar: params[:avatar])
+		pet = Pet.new(name:params[:pet_name], sex:params[:pet_sex], species:params[:pet_species], age:params[:pet_age], color: params[:pet_color], breed:params[:pet_breed], pin: pin, user_id: current_user.id, avatar: params[:avatar])
 		if pet.save
 			flash[:success] = "Pet has been added."
 			redirect_to :back
