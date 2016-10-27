@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026204614) do
+ActiveRecord::Schema.define(version: 20161027190301) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20161026204614) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "note"
+    t.integer  "pets_id"
+    t.integer  "vets_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["pets_id"], name: "index_comments_on_pets_id"
+  add_index "comments", ["vets_id"], name: "index_comments_on_vets_id"
 
   create_table "pets", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +51,30 @@ ActiveRecord::Schema.define(version: 20161026204614) do
   end
 
   add_index "pets", ["user_id"], name: "index_pets_on_user_id"
+
+  create_table "records", force: :cascade do |t|
+    t.string   "fixed"
+    t.string   "allergy"
+    t.string   "behavior"
+    t.integer  "pets_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "records", ["pets_id"], name: "index_records_on_pets_id"
+
+  create_table "shots", force: :cascade do |t|
+    t.integer  "pets_id"
+    t.integer  "records_id"
+    t.string   "vaccine"
+    t.date     "start"
+    t.date     "expiration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "shots", ["pets_id"], name: "index_shots_on_pets_id"
+  add_index "shots", ["records_id"], name: "index_shots_on_records_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
