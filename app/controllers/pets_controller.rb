@@ -14,10 +14,9 @@ class PetsController < ApplicationController
 
 	def create
 		pin = [*('a'..'z'),*('0'..'9')].shuffle[0,9].join
-		pet = Pet.new(name:params[:pet_name], sex:params[:pet_sex], species:params[:pet_species], age:params[:pet_age], color: params[:pet_color], breed:params[:pet_breed], pin: pin, user_id: current_user.id, avatar: params[:avatar])
+		pet = Pet.new(name:params[:pet_name], sex:params[:pet_sex], species:params[:pet_species], age:params[:pet_age], color: params[:pet_color], breed:params[:pet_breed], pin:pin, user_id: current_user.id, avatar:params[:avatar])
 		if pet.save
-			flash[:success] = "Pet has been added."
-			redirect_to :back
+			redirect_to "/users/#{current_user.id}"
   		else
   			flash[:errors] = pet.errors.full_messages
   			redirect_to :back
@@ -36,7 +35,7 @@ class PetsController < ApplicationController
 	end
 
 	def delete
-
-		
+		Pet.find(params[:id]).destroy
+		redirect_to :back
 	end
 end

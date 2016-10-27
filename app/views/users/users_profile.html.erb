@@ -15,16 +15,26 @@
 			<div class="row">
 			<p>Profile Picture:</p>
 				<form action="/users/profilePic/<%= current_user.id %>" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-					<input type="hidden" name="_method" value="patch">
-					<input id="user_pic" type="file" name="avatar">
-					<input class=" modal-action waves-effect waves-green btn-flat" type="submit" value="Update">
+				  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				  <input type="hidden" name="_method" value="patch">
+				  <div class="file-field input-field">
+				    <div class="btn">
+				      <span>File</span>
+				      <input type="file">
+				    </div>
+				    <div class="file-path-wrapper">
+				      <input class="file-path validate" type="text" name="avatar">
+				    </div>
+				    <div class="col s6 offset-s1">
+				      <input class="waves-effect waves-light btn" type="submit" value="Update">
+				    </div>	
+				  </div>
 				</form>
 			</div>
 		</div>
 	</div>
     <div class="modal-footer">
-  		<a class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+  		<a class="waves-effect waves-light btn red">Cancel</a>
     </div>
 </div>
 <div class="row">
