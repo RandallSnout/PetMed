@@ -24,6 +24,7 @@ $(document).ready(function(){
     })
     $('.modal-trigger').leanModal();
     $(".dropdown-button").dropdown();
+    $(".dropdown-button").dropdown();
     $('.slider').slider({full_width: true});
     $('.newbtn1').click(function(){
             $('#modal1').openModal();
@@ -37,6 +38,17 @@ $(document).ready(function(){
     $('.new-pic').click(function(){
         $('#profile-pic').openModal();
     })
+
+    $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+  );
 
   });
 

@@ -116,7 +116,6 @@ class UsersController < ApplicationController
 
 	def vet_show
 		@vet = Vet.joins(:address).select("first_name", "last_name","email","office_name", "street", "state", "city", "zip").find(params[:id])
-		
 	end
 # the address parameters are wrong since we havent set how to find the specific addresses yet
 	def update_vet
