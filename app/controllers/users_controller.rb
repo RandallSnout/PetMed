@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 		if !params[:phone_number_update].empty?
 			u = User.find(current_user.id)
 			u.update(first_name:params[:first_name_update], last_name:params[:last_name_update], email:params[:email_update], phone_number:params[:phone_number_update]) 
-			a = Address.find(current_user.id)
+			a = Address.find(User.find(current_user.id).address_id)
 			a.update(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
 			if a.valid? && u.valid?
 				a.save && u.save
@@ -62,10 +62,11 @@ class UsersController < ApplicationController
 		elsif session[:phone] == 1
 			u = User.find(current_user.id)
 			u.update(first_name:params[:first_name_update], last_name:params[:last_name_update], email:params[:email_update], phone_number:params[:phone_number_update]) 
-			a = Address.find(current_user.id)
+			a = Address.find(User.find(current_user.id).address_id)
 			a.update(street:params[:street_update], city:params[:city_update], state:params[:state_update], zip:params[:zip_update])
 			if a.valid? && u.valid?
-				a.save && u.save
+				a.save
+				u.save
 				session[:phone] = 0
 				redirect_to "/users/#{current_user.id}"
 			else 
@@ -122,15 +123,27 @@ class UsersController < ApplicationController
 
 
 	def update_vet
-		doc =  Vet.find(params[:id])
-		vet_add = Address.find(params[:id])
-		doc.update(first_name:params[:first_name], last_name:params[:last_name], email:params[:email], phone_number:params[:phone])
-		vet_add.update(street:params[:street], city:params[:vet_city_update], state:params[:state], zip:params[:zip])
-		if params[:avatar]
-			Vet.find(params[:id]).update(avatar: params[:avatar])
-			redirect_to "/vets/#{current_user.id}"
+		doc =  Vet.find(current_user.id)
+		vet_add = Address.find(Vet.find(current_user.id).address_id)
+		doc.update(first_name:params[:first_name], last_name:params[:last_name], email:params[:email_update], phone_number:params[:phone_number], office_name:params[:office_name])
+
+		vet_add.update(street:params[:vet_street_update], city:params[:vet_city_update], state:params[:vet_state_update], zip:params[:vet_zip_update])
+
+		if doc.valid? && vet_add.valid?
+			if params[:avatar]
+				Vet.find(params[:id]).update(avatar: params[:avatar])
+				doc.save
+				vet_add.save
+				redirect_to "/vets/#{doc.id}"
+			else
+				doc.save
+				vet_add.save
+				redirect_to "/vets/#{doc.id}"
+			end
 		else
-			redirect_to "/vets/#{current_user.id}"
+			flash[:vet_err] = doc.errors.full_messages
+			flash[:vet_add_err] = vet_add.errors.full_messages
+			redirect_to :back
 		end
 	end
 

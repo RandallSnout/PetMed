@@ -34,7 +34,7 @@
 		</div>
 	</div>
     <div class="modal-footer">
-  		<a class="waves-effect waves-light btn red">Cancel</a>
+  		<a class="waves-effect waves-light btn red modal-close" href=""> Cancel</a>
     </div>
 </div>
 
@@ -51,13 +51,13 @@
 	</div>
 
 	<div class="col s9">
-		<h3>Welcome Dr. <%= @vet.first_name %> <%= @vet.last_name %></h3>
-		<h4>Office: <%= @vet.office_name %></h4>
-		<h4>Phone: <%= @vet.phone_number %></h4>
-		<h4>Address:</h4>
-		<div class="col s11 offset-s1">
-		<h5><%= @vet.street %></h5>
-		<h5><%= @vet.city %>, <%= @vet.state %> <%= @vet.zip %></h5>
+		<h4><strong>Welcome: </strong> <span><i><small>Dr. <%= @vet.first_name %> <%= @vet.last_name %></i></small></span></h4>
+		<h4><strong>Office:</strong> <span><i><small><%= @vet.office_name %></small></i></span></h4>
+		<h4><strong>Number:</strong> <span><i><small><%= @vet.phone_number %></small></i></span></h4>
+		<h4 class="vet_add_head"><strong>Address:</strong></h4>
+		<div class="vet_address">
+			<h5><i><%= @vet.street %></i></h5>
+			<h5><i><%= @vet.city %>, <%= @vet.state %>, <%= @vet.zip %></i></h5>
 		</div>
 	</div>
 </div>

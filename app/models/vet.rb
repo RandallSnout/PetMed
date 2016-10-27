@@ -3,8 +3,10 @@ class Vet < ActiveRecord::Base
   has_secure_password
   has_attached_file :avatar
 
+
+
   validates :phone_number, :presence => true
-  validates :first_name, :last_name, :office_name, :presence => true, on: :create
+  validates :first_name, :last_name, :office_name, :presence => true
   email_regex = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
   validates :email, :presence => true, :format => { :with => email_regex }, :uniqueness => true
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]

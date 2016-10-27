@@ -43,9 +43,9 @@ Rails.application.routes.draw do
 # -------[patch for pet/vet/owner updates]-----------------------
   patch "users/profilePic/:id" => 'users#update_user_pic'
   patch "vets/profilePic/:id" => 'users#update_vet_pic'
-  patch 'users/update/:id' => 'users#update_user'
-  patch 'vet/update/:id' => 'users#update_vet'
-  patch 'pet/update/:id' => 'pets#update'
+  patch "users/update/:id" => 'users#update_user'
+  patch "vets/update/:id" => 'users#update_vet'
+  patch "pet/update/:id" => 'pets#update'
 
 # -------[destroy]-----------------------------------------------
   delete 'sessions/logout' => 'sessions#destroy'
