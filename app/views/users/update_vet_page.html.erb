@@ -1,12 +1,12 @@
 <% if flash[:are_you_sure] %>
 	<p><%= flash[:are_you_sure] %></p>
 <% end %>
-
+<div class="row">	
+  <h2>Edit Your Profile</h2>
+</div>
 <div class="row">
 	<div class="col s6">
-		<div class="row">	
-		  <h2>Edit Your Profile</h2>
-		</div>
+
 		<div class="clear"></div>
 		<form action="/vets/update/<%= @vet.id %>" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -32,20 +32,22 @@
 <div class="clear"></div>
 
 			<label>First Name:</label> 
-			<input type="text" name="first_name_update" value="<%= @vet.first_name%>">
+			<input type="text" name="first_name" value="<%= @vet.first_name%>">
 			<label>Last Name:</label> 
-			<input type="text" name="last_name_update" value="<%= @vet.last_name%>">
+			<input type="text" name="last_name" value="<%= @vet.last_name%>">
 			<label>Office Name:</label>
-			<input type="text" name="office_name_update" value="<%= @vet.office_name %>">
+			<input type="text" name="office_name" value="<%= @vet.office_name %>">
 			<label>Email:</label> 
 			<input type="text" name="email_update" value="<%=@vet.email%>">
 			<label>Phone Number:</label>
-			<input type="text" name="phone_number_update" value="<%= @vet.phone_number%>">
-			<p>Address:</p>
+			<input type="text" name="phone_number" value="<%= @vet.phone_number%>">
+		</div>
+		<div class="col s6">
+			<h5>Address:</h5>
 			<label>Street:</label> 
-			<input type="text" name="street_update" value="<%= @vet.street %>"> 
+			<input type="text" name="street" value="<%= @vet.street %>"> 
 			<label>City:</label>
-			<input type="text" name="city_update" value="<%= @vet.city %>">	
+			<input type="text" name="city" value="<%= @vet.city %>">	
 			<label>State:</label>
 			<select class="browser-default" name="state_update">
 	        		<option selected="selected"><%= @vet.state %></option> 
@@ -102,9 +104,9 @@
 					<option value="WY">Wyoming</option>
 				   </select>
 			<label>Zip Code:</label>
-			<input type="number" name="zip_update" value="<%= @vet.zip%>">
+			<input type="number" name="zip" value="<%= @vet.zip%>">
 			<input class="waves-effect waves-light btn" type="submit" value="Update Records">
-			<a href="/users/<%= @vet.id %>" class="waves-effect waves-light btn red">Cancel</a>
+			<a href="/vets/<%= @vet.id %>" class="waves-effect waves-light btn red">Cancel</a>
 		</form>
 	</div>
 

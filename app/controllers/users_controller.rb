@@ -26,10 +26,9 @@ class UsersController < ApplicationController
 	end
 
 	def vet_profile 
-		@vet = Vet.joins(:address).select("first_name", "last_name","email", "phone_number", "office_name", "street", "state", "city", "zip").find(params[:id])
+		@vet = Vet.joins(:address).select("vets.id as id", "first_name", "last_name","email", "phone_number", "office_name", "street", "state", "city", "zip", "avatar_file_name").find(params[:id])
 		@clients = User.joins(:address).select("users.id as id", "first_name", "last_name", "phone_number", "email", "address_id as U_address", :street, :city, :state, :zip).where("vet_id = #{params[:id]}")
 		@pets = Pet.select("id", "name", "user_id as owner").all
-
 	end
 
 	def create_vet
@@ -66,7 +65,6 @@ class UsersController < ApplicationController
 		if !session[:phone]
 		session[:phone] = 0
 		end
-
 		@pets = Pet.where("user_id = #{current_user.id}")
 		@user = current_user
 		@address = Address.find(current_user.id)
@@ -116,7 +114,7 @@ class UsersController < ApplicationController
 # ------------------------------------------------
 
 	def update_vet_page
-		@vet = Vet.joins(:address).select("first_name", "last_name","phone_number", "email","office_name", "street", "state", "city", "zip", "avatar_file_name").find(params[:id])
+		@vet = Vet.joins(:address).select("vets.id as id", "first_name", "last_name","phone_number", "email","office_name", "street", "state", "city", "zip", "avatar_file_name").find(params[:id])
 	end
 
 	def vet_show
@@ -126,13 +124,24 @@ class UsersController < ApplicationController
 	def update_vet
 		doc =  Vet.find(params[:id])
 		vet_add = Address.find(params[:id])
-
-		doc.update(first_name:params[:vet_first_name_update], last_name:params[:vet_last_name_update], email:params[:vet_email_update], phone_number:params[:vet_phone_update])
-
-		vet_add.update(street:params[:vet_street_update], city:params[:vet_city_update], state:params[:vet_state_update], zip:params[:vet_zip_update])
-		redirect_to "/vets/#{current_user.id}"
+		doc.update(first_name:params[:first_name], last_name:params[:last_name], email:params[:email], phone_number:params[:phone])
+		vet_add.update(street:params[:street], city:params[:vet_city_update], state:params[:state], zip:params[:zip])
+		if params[:avatar]
+			Vet.find(params[:id]).update(avatar: params[:avatar])
+			redirect_to "/vets/#{current_user.id}"
+		else
+			redirect_to "/vets/#{current_user.id}"
+		end
 	end
 
+	def update_vet_pic
+		if params[:avatar]
+			Vet.find(params[:id]).update(avatar: params[:avatar])
+			redirect_to "/vets/#{current_user.id}"
+		else
+			redirect_to "/vets/#{current_user.id}"
+		end
+	end
 
 	private
   def user_params
