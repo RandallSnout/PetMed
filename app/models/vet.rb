@@ -2,7 +2,7 @@ class Vet < ActiveRecord::Base
   belongs_to :address
   has_secure_password
   has_attached_file :avatar
-
+  has_many :comments
   validates :phone_number, :presence => true
   validates :first_name, :last_name, :office_name, :presence => true, on: :create
   email_regex = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
