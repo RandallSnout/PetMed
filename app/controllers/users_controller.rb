@@ -25,18 +25,11 @@ class UsersController < ApplicationController
 		@pets = Pet.where("user_id = #{current_user.id}")
 	end
 
-<<<<<<< Updated upstream
-	def vet_profile
-		@vet = Vet.joins(:address).select("first_name", "last_name", "street", "state", "city", "zip", "office_name", "phone_number", "avatar_file_name").find(current_user.id)
-		# @vet = Vet.joins(:address).select(:first_name, :last_name, :office_name, :phone_number, :street, :city, :state, :zip)
-		@clients = User.joins(:address).select("first_name", "last_name", "email", "address_id as U_address", :street, :city, :state, :zip)
-		@pet = Pet.joins(:user).select("name", "sex", "species", "age", "user_id as owner", :first_name,  :last_name)
-=======
 	def vet_profile 
 		@vet = Vet.joins(:address).select("first_name", "last_name","email", "phone_number", "office_name", "street", "state", "city", "zip").find(params[:id])
 		@clients = User.joins(:address).select("users.id as id", "first_name", "last_name", "phone_number", "email", "address_id as U_address", :street, :city, :state, :zip).where("vet_id = #{params[:id]}")
 		@pets = Pet.select("id", "name", "user_id as owner").all
->>>>>>> Stashed changes
+
 	end
 
 	def create_vet
