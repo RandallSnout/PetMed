@@ -3,21 +3,15 @@ class UsersController < ApplicationController
 	before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
 	
 # ------------------------------------------------
-	def users_profile
-	end
 
 	def redirect
-		@user = User.find(params[:id]) 
-		if @user
+	  @user = User.find(params[:id]) 
+	  if @user
 		redirect_to "/users/#{@user.id}"
-    end
+      end
 	end
 
-	def vet_redirect
-		@vet = Vet.find(params[:id])
-		if @vet 
-		redirect_to "/vets/#{@vet.id}"
-		end
+	def users_profile
 	end
 
 	def users_profile 
@@ -25,45 +19,23 @@ class UsersController < ApplicationController
 		@pets = Pet.where("user_id = #{current_user.id}")
 	end
 
-	def vet_profile 
-		@vet = Vet.joins(:address).select("vets.id as id", "first_name", "last_name","email", "phone_number", "office_name", "street", "state", "city", "zip", "avatar_file_name").find(params[:id])
-		@clients = User.joins(:address).select("users.id as id", "first_name", "last_name", "phone_number", "email", "address_id as U_address", :street, :city, :state, :zip).where("vet_id = #{params[:id]}")
-		@pets = Pet.select("id", "name", "user_id as owner").all
-	end
-
-	def create_vet
-		vet = Vet.new(vet_params)
-		address = Address.new(address_params)
-    	if  vet && address.save
-      		vet.address_id = address.id
-      		vet.save
-        	session[:vet_id] = vet.id
-        	redirect_to "/vets/#{vet.id}"
-     	else
-        	flash[:error] = vet.errors.full_messages
-        	redirect_to :back
-    	end	
-	end
-
 	def create_user
 		user = User.new(user_params)
 		address = Address.new(address_params)
-    if user && address.save
-    	user.address_id = address.id
-    	user.save
-      session[:user_id] = user.id
-      redirect_to "/users/#{user.id}"
-    else
-      flash[:error] = user.errors.full_messages
-      redirect_to :back
-   end
-  end
-
-
+    	if user && address.save
+    		user.address_id = address.id
+    		user.save
+      		session[:user_id] = user.id
+      		redirect_to "/users/#{user.id}"
+		else
+      		flash[:error] = user.errors.full_messages
+      		redirect_to :back
+		end
+	end
 
 	def update_user_page
 		if !session[:phone]
-		session[:phone] = 0
+			session[:phone] = 0
 		end
 		@pets = Pet.where("user_id = #{current_user.id}")
 		@user = current_user
@@ -112,6 +84,33 @@ class UsersController < ApplicationController
 		end
 	end
 # ------------------------------------------------
+	
+	def vet_redirect
+		@vet = Vet.find(params[:id])
+		if @vet 
+		redirect_to "/vets/#{@vet.id}"
+		end
+	end
+
+	def vet_profile 
+		@vet = Vet.joins(:address).select("vets.id as id", "first_name", "last_name","email", "phone_number", "office_name", "street", "state", "city", "zip", "avatar_file_name").find(params[:id])
+		@clients = User.joins(:address).select("users.id as id", "first_name", "last_name", "phone_number", "email", "address_id as U_address", :street, :city, :state, :zip).where("vet_id = #{params[:id]}")
+		@pets = Pet.select("id", "name", "user_id as owner").all
+	end
+
+	def create_vet
+		vet = Vet.new(vet_params)
+		address = Address.new(address_params)
+    	if  vet && address.save
+      		vet.address_id = address.id
+      		vet.save
+        	session[:vet_id] = vet.id
+        	redirect_to "/vets/#{vet.id}"
+     	else
+        	flash[:error] = vet.errors.full_messages
+        	redirect_to :back
+    	end	
+	end
 
 	def update_vet_page
 		@vet = Vet.joins(:address).select("vets.id as id", "first_name", "last_name","phone_number", "email","office_name", "street", "state", "city", "zip", "avatar_file_name").find(params[:id])
@@ -120,6 +119,7 @@ class UsersController < ApplicationController
 	def vet_show
 		@vet = Vet.joins(:address).select("first_name", "last_name","email","office_name", "street", "state", "city", "zip").find(params[:id])
 	end
+
 
 	def update_vet
 		doc =  Vet.find(params[:id])
@@ -143,6 +143,9 @@ class UsersController < ApplicationController
 		end
 	end
 
+
+# ------------------------------------------------
+
 	private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :avatar) 
@@ -150,7 +153,7 @@ class UsersController < ApplicationController
 
   	private
   def vet_params
-    params.require(:vet).permit(:first_name, :last_name, :office_name, :email, :password) 
+    params.require(:vet).permit(:first_name, :last_name, :office_name, :email, :phone_number, :password) 
   end
 
    	private
