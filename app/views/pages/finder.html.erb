@@ -6,3 +6,28 @@
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBYOR2ycjxUavAw_SbROFRl2wnUuaWeldo
     &q=Coding+Dojo,Burbank+CA" allowfullscreen>
 </iframe>
+<h4>Veterinary Locations</h4>
+<table>
+	<tr>
+		<td>Name</td>
+		<td>Office</td>
+		<td>Address</td>		
+	</tr>
+	<% @vets.each do |v| %>
+	<tr>
+		<td><%= v.first_name %> <%= v.last_name %></td>
+		<td><%= v.office_name %></td>
+		<td><%= v.street %>, <%= v.city %>, <%= v.state %>, <%= v.zip %></td>
+		<% if current_user %>
+			<% if v.VET_ID != @a.VETS_ID %>
+				<td><a class="btn waves-light" href="">JOIN</a></td>
+			<% end %>		
+		<% end %>
+	</tr>
+	<% end %>
+</table>
+
+	
+
+
+

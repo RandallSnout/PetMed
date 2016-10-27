@@ -1,11 +1,8 @@
 class User < ActiveRecord::Base
-
   belongs_to :address
+  belongs_to :vet
   has_secure_password
   has_attached_file :avatar
-
-  check_phone = false
-  puts check_phone
 
   validates :first_name, :last_name,  :presence => true
 
