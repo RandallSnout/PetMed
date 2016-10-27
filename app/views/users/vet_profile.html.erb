@@ -83,7 +83,7 @@
             <td><%= client.street %> <%= client.city%>, <%= client.state %> <%= client.zip %></td>
             <td><%= client.phone_number %></td>
             <td><%= client.email %></td>
-            <td><a class='dropdown-button btn' href="" data-activates="pet<%= client.id %>">Pets Link</a>
+            <td><a class='dropdown-button btn' data-activates="pet<%= client.id %>">Pets Link</a>
 	            <ul id='pet<%= client.id %>' class='dropdown-content'>
 	            	<% @pets.reject{ |p| p.owner != client.id }.each do |pet|%>
 				      <li><a href="/pets/admin/<%= pet.id %>"><%= pet.name %></a></li>
