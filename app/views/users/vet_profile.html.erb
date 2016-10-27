@@ -32,19 +32,21 @@
         </thead>
 
         <tbody>
+        <% @clients.each do |client| %>
           <tr>
-            <td>Alvin Smith</td>
-            <td>1123 Street Ave Town, ST 91234</td>
-            <td>900-555-1234</td>
-            <td>name@email.com</td>
-            <td><a class='dropdown-button btn' href="" data-activates="pet1">Pets</a>
-	            <ul id='pet1' class='dropdown-content'>
-				    <li><a href="#!">one</a></li>
-				    <li><a href="#!">two</a></li>
-			    	<li><a href="#!">three</a></li>
+            <td><%= client.first_name %> <%= client.last_name %></td>
+            <td><%= client.street %> <%= client.city%>, <%= client.state %> <%= client.zip %></td>
+            <td><%= client.phone_number %></td>
+            <td><%= client.email %></td>
+            <td><a class='dropdown-button btn' href="" data-activates="pet<%= client.id %>">Pets Link</a>
+	            <ul id='pet<%= client.id %>' class='dropdown-content'>
+	            	<% @pets.reject{ |p| p.owner != client.id }.each do |pet|%>
+				      <li><a href="/pets/admin/<%= pet.id %>"><%= pet.name %></a></li>
+				    <% end %>
 				</ul>
 			</td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

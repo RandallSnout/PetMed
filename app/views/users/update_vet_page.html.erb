@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div>
 	<form action="/vet/update/<%= current_user.id %>" method="post">
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -13,6 +14,58 @@
 			City: <input type="text" name="vet_city_update" value="<%=@address.city%>">	
 			State: <select class="browser-default" name="state_update">
 	        		<option selected="selected"><%= @address.state%></option> 
+=======
+<% if flash[:are_you_sure] %>
+	<p><%= flash[:are_you_sure] %></p>
+<% end %>
+
+<div class="row">
+	<div class="col s6">
+		<div class="row">	
+		  <h2>Edit Your Profile</h2>
+		</div>
+		<div class="clear"></div>
+		<form action="/vets/update/<%= @vet.id %>" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="hidden" name="_method" value="patch">
+			<div class="row">	
+				<div class="col s2">
+					<% if @vet.avatar_file_name != nil %>
+				      	<%= image_tag @user.avatar.url %>
+				    <% else %>
+				      	<%= image_tag "profile-holder" %>
+				    <% end %>
+			    </div>
+			    <div class="col s8">
+			    	<div class="row">
+						<label for="pet_pic">Profile Picture:</label> 
+					</div>
+					<div class="row">
+						<input id="pet_pic" type="file" name="avatar">
+					</div>
+				</div>
+			</div>
+
+<div class="clear"></div>
+
+			<label>First Name:</label> 
+			<input type="text" name="first_name_update" value="<%= @vet.first_name%>">
+			<label>Last Name:</label> 
+			<input type="text" name="last_name_update" value="<%= @vet.last_name%>">
+			<label>Office Name:</label>
+			<input type="text" name="office_name_update" value="<%= @vet.office_name %>">
+			<label>Email:</label> 
+			<input type="text" name="email_update" value="<%=@vet.email%>">
+			<label>Phone Number:</label>
+			<input type="text" name="phone_number_update" value="<%= @vet.phone_number%>">
+			<p>Address:</p>
+			<label>Street:</label> 
+			<input type="text" name="street_update" value="<%= @vet.street %>"> 
+			<label>City:</label>
+			<input type="text" name="city_update" value="<%= @vet.city %>">	
+			<label>State:</label>
+			<select class="browser-default" name="state_update">
+	        		<option selected="selected"><%= @vet.state %></option> 
 					<option value="AL">Alabama</option>
 					<option value="AK">Alaska</option>
 					<option value="AZ">Arizona</option>
@@ -65,7 +118,10 @@
 					<option value="WI">Wisconsin</option>
 					<option value="WY">Wyoming</option>
 				   </select>
-			Zip Code: <input type="number" name="vet_zip_update" value="<%=@address.zip%>">
-		<input type="submit" value="Update Records">
-	</form>
-</div>
+			<label>Zip Code:</label>
+			<input type="number" name="zip_update" value="<%= @vet.zip%>">
+			<input class="waves-effect waves-light btn" type="submit" value="Update Records">
+			<a href="/users/<%= @vet.id %>" class="waves-effect waves-light btn red">Cancel</a>
+		</form>
+	</div>
+
