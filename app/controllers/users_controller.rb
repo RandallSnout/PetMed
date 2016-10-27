@@ -25,8 +25,9 @@ class UsersController < ApplicationController
 		@pets = Pet.where("user_id = #{current_user.id}")
 	end
 
-	def vet_profile 
-		@vet = Vet.find(params[:id])
+	def vet_profile
+		@vet = Vet.joins(:address).select("first_name", "last_name", "street", "state", "city", "zip", "office_name", "phone_number", "avatar_file_name").find(current_user.id)
+		# @vet = Vet.joins(:address).select(:first_name, :last_name, :office_name, :phone_number, :street, :city, :state, :zip)
 		@clients = User.joins(:address).select("first_name", "last_name", "email", "address_id as U_address", :street, :city, :state, :zip)
 		@pet = Pet.joins(:user).select("name", "sex", "species", "age", "user_id as owner", :first_name,  :last_name)
 	end
@@ -34,15 +35,15 @@ class UsersController < ApplicationController
 	def create_vet
 		vet = Vet.new(vet_params)
 		address = Address.new(address_params)
-    if  vet && address.save
-      	vet.address_id = address.id
-      	vet.save
-        session[:vet_id] = vet.id
-        redirect_to "/vets/#{vet.id}"
-     else
-        flash[:error] = vet.errors.full_messages
-        redirect_to :back
-    end
+    	if  vet && address.save
+      		vet.address_id = address.id
+      		vet.save
+        	session[:vet_id] = vet.id
+        	redirect_to "/vets/#{vet.id}"
+     	else
+        	flash[:error] = vet.errors.full_messages
+        	redirect_to :back
+    	end	
 	end
 
 	def create_user
@@ -115,16 +116,22 @@ class UsersController < ApplicationController
 # ------------------------------------------------
 
 	def update_vet_page
-		
+		@doc =  Vet.find(current_user.id)
+		@address = Address.find(current_user.id)
 	end
 
 	def vet_show
 		@vet = Vet.joins(:address).select("first_name", "last_name","email","office_name", "street", "state", "city", "zip").find(params[:id])
 	end
-# the address parameters are wrong since we havent set how to find the specific addresses yet
+
 	def update_vet
-		vet_update = Vet.find().update(first_name:params[:vet_first_name_update], last_name:params[:vet_last_name_update], email:params[:vet_email_update])
-		vet_address_update = Address.update(street:params[:vet_street_update], city:params[:vet_city_update], state:params[:vet_state_update], zip:params[:vet_zip_update])
+		doc =  Vet.find(params[:id])
+		vet_add = Address.find(params[:id])
+
+		doc.update(first_name:params[:vet_first_name_update], last_name:params[:vet_last_name_update], email:params[:vet_email_update], phone_number:params[:vet_phone_update])
+
+		vet_add.update(street:params[:vet_street_update], city:params[:vet_city_update], state:params[:vet_state_update], zip:params[:vet_zip_update])
+		redirect_to "/vets/#{current_user.id}"
 	end
 
 
@@ -143,3 +150,4 @@ class UsersController < ApplicationController
     params.require(:address).permit(:street, :city, :state, :zip) 
   end
 end
+	

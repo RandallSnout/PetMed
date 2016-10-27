@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
 # -------[owner to vets profile page]-----------------------------
   get "vets/public/:id" => "users#vet_show"
-  get 'update/vet/:id' => 'users#update_vet_page'
+  get "update/vet/:id" => "users#update_vet_page"
 
 # -------[main user page and update]----------------------------- 
   get "users/:id" => "users#users_profile"
@@ -41,7 +41,6 @@ Rails.application.routes.draw do
   get 'pets/delete/:id' => 'pets#delete'
 
 # -------[patch for pet/vet/owner updates]-----------------------
-
   patch "users/profilePic/:id" => 'users#update_user_pic'
   patch 'users/update/:id' => 'users#update_user'
   patch 'vet/update/:id' => 'users#update_vet'

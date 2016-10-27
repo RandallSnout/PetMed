@@ -1,15 +1,18 @@
 <div>
-	<form action="/vet/update/<%= @user.id %>" method="post">
+	<form action="/vet/update/<%= current_user.id %>" method="post">
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-		<input type="hidden" name="_method" value="">
-		First Name: <input type="text" name="first_name_update" value="<%=         %>">
-		Last Name: <input type="text" name="last_name_update" value="<%=         %>">
-		Email: <input type="text" name="email_update" value="<%=     %>">
+		<input type="hidden" name="_method" value="patch">
+		
+		First Name: <input type="text" name="vet_first_name_update" value="<%=@doc.first_name%>">
+		Last Name: <input type="text" name="vet_last_name_update" value="<%=@doc.last_name%>">
+		Email: <input type="text" name="vet_email_update" value="<%=@doc.email%>">
+		Phone Number: <input type="text" name="vet_phone_update" value="<%=@doc.phone_number %>">
+
 		<p>Address:</p>
-			Street: <input type="text" name="street_update" value="<%=      %>"> 
-			City: <input type="text" name="city_update">	
+			Street: <input type="text" name="vet_street_update" value="<%=@address.street%>"> 
+			City: <input type="text" name="vet_city_update" value="<%=@address.city%>">	
 			State: <select class="browser-default" name="state_update">
-	        		<option selected="selected"><%=   %></option> 
+	        		<option selected="selected"><%= @address.state%></option> 
 					<option value="AL">Alabama</option>
 					<option value="AK">Alaska</option>
 					<option value="AZ">Arizona</option>
@@ -62,7 +65,7 @@
 					<option value="WI">Wisconsin</option>
 					<option value="WY">Wyoming</option>
 				   </select>
-			Zip Code: <input type="number" name="zip_update" value="<%=      %>">
-		<input type="submit" name="Update Records">
+			Zip Code: <input type="number" name="vet_zip_update" value="<%=@address.zip%>">
+		<input type="submit" value="Update Records">
 	</form>
 </div>
