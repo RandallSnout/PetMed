@@ -7,8 +7,14 @@
 		<div class="row">
 		<label for="pet_pic">Profile Picture:</label> 
 		</div>
-		<div class="row">
-		<input id="pet_pic" type="file" name="avatar">
+		<div class="file-field input-field">
+		    <div class="btn">
+		      <span>File</span>
+		      <input type="file" name="avatar">
+		    </div>
+		    <div class="file-path-wrapper">
+		      <input class="file-path validate" type="text">
+		    </div>
 		</div>
 		<div class="input-field">
 		<label for="pet_name">Name:</label> 
@@ -41,5 +47,21 @@
 	</form>
 </div>
 <div class="col s6">
-	<h4>Add Current Pet Records</h4>
+	<h4>Add Pet Pictures</h4>
+	<form action="" method="post" enctype="multipart/form-data">
+	  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	  <input type="hidden" name="_method" value="patch">
+	  <div class="file-field input-field">
+	    <div class="btn">
+	      <span>File</span>
+	      <input type="file" name="avatar">
+	    </div>
+	    <div class="file-path-wrapper">
+	      <input class="file-path validate" type="text">
+	    </div>
+	    <div class="col s6 offset-s1">
+	      <input class="waves-effect waves-light btn" type="submit" value="Add">
+	    </div>	
+	  </div>
+	</form>
 </div>
