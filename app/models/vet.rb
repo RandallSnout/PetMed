@@ -5,8 +5,8 @@ class Vet < ActiveRecord::Base
   has_many :comments
   has_many :users
 
-  
-  validates :phone_number, :presence => true
+
+  validates :phone_number, :presence => true, format: { with: /\d{3}-\d{3}-\d{4}/, message: "bad format" }
   validates :first_name, :last_name, :office_name, :presence => true
   email_regex = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
   validates :email, :presence => true, :format => { :with => email_regex }, :uniqueness => true

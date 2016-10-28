@@ -1,9 +1,13 @@
 <% if flash[:vet_err] %>
-	<h1 class="error"><%= flash[:vet_err] %></h1>
+	<% flash[:vet_err].each do |err| %>
+		<h1 class="error"><%= err %></h1>
+	<% end %>
 <% end %>
 
 <% if flash[:vet_add_err] %>
-	<h1 class="error"><%= flash[:vet_add_err] %></h1>
+	<% flash[:vet_add_err].each do |err2| %>
+		<h1 class="error"><%= err2 %></h1>
+	<% end %>
 <% end %>
 
 <div class="row">	
