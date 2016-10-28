@@ -2,9 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.margin-left {
-	margin-left: 125px;
-}
+
 .short  {
 	line-height:35px;
 	margin-top: 10px;
@@ -61,9 +59,13 @@ img {width:100%;}
 .clear {
 	clear:both;
 }
-.cat {
-	margin-top:-60px;
-}
 .error {
 	color:red;
+}
+.map {
+	margin-top:-17px;
+}
+
+.home-gif {
+	margin-top:-60px;
 }
