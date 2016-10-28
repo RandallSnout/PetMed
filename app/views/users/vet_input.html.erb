@@ -52,6 +52,7 @@
       </div>
       <div class="col s3">
       <h5 class="color6">
+      <% if @shot.vaccine %>
         <p>Records</p>
         <ul>
           <li>Fixed: <%= @rec.fixed %></li>
@@ -59,6 +60,9 @@
           <li>Allergies: <%= @rec.allergy %></li>
           <li>Behavior: <%= @rec.behavior %></li>
         </ul>
+        <% else %>
+        <p class="error">Please Create Record.</p>
+        <% end %>
       </h5>
     </div>
     </div>
