@@ -4,6 +4,21 @@
 */
 @import "materialize";
 
+
+.logo img{
+    width:140px;
+    z-index:10;
+    position:absolute;
+    margin-top:3px;
+    background:#3f51b5;
+    padding:5px; 
+    border-radius:5px;
+}
+
+.margin-left {
+    margin-left: 145px;
+}
+
 .home_contaier {
     margin-left: 27em;
 }
