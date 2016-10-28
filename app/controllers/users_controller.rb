@@ -87,11 +87,6 @@ class UsersController < ApplicationController
 		User.find(current_user.id).update(vet_id:params[:id])
 		redirect_to :back
 	end
-
-	def leave_vet
-		leave = User.find(current_user.id)
-		leave.update(vet_id:0)
-	end
 # ------------------------------------------------
 	
 	def vet_redirect
@@ -126,7 +121,7 @@ class UsersController < ApplicationController
 	end
 
 	def vet_show
-		@vet = Vet.joins(:address).select("first_name", "last_name","email","phone_number", "office_name", "street", "state", "city", "zip").find(params[:id])
+		@vet = Vet.joins(:address).select("first_name", "last_name","email","phone_number", "office_name", "street", "state", "city", "zip", "avatar_file_name").find(params[:id])
 		@vet_profile = Vet.find(params[:id])
 	end
 
