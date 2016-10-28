@@ -82,6 +82,15 @@ class UsersController < ApplicationController
 			redirect_to "/users/#{current_user.id}"
 		end
 	end
+
+	def join_vet
+
+	end
+
+	def leave_vet
+		leave = User.find(current_user.id)
+		leave.update(vet_id:0)
+	end
 # ------------------------------------------------
 	
 	def vet_redirect

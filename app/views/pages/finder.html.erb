@@ -1,4 +1,4 @@
-<h3>Finder</h3>
+<h3>Find a Vet</h3>
 <iframe
   width="100%"
   height="450"
@@ -20,7 +20,7 @@
 		<td><%= v.street %>, <%= v.city %>, <%= v.state %>, <%= v.zip %></td>
 		<% if current_user %>
 			<% if v.VET_ID != @a.VETS_ID %>
-				<td><a class="btn waves-light" href="">JOIN</a></td>
+				<td><a class="btn waves-light" href="users/join">Join</a></td>
 			<% end %>		
 		<% end %>
 	</tr>
