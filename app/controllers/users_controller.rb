@@ -105,9 +105,10 @@ class UsersController < ApplicationController
 	def create_vet
 		vet = Vet.new(vet_params)
 		address = Address.new(address_params)
-    	if  vet && address.save
-      		vet.address_id = address.id
+    	if  vet.valid? && address.valid?
       		vet.save
+      		address.save
+      		vet.update(address_id:address.id)
         	session[:vet_id] = vet.id
         	redirect_to "/vets/#{vet.id}"
      	else

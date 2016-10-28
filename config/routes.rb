@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "sessions/new" => "sessions#new"
 
 # -------[new vet]-----------------------------------------------
-  get "vets/register" => "users#create_vet"
+  # get "vets/register" => "users#create_vet"
   get "sessions/vet_new" => "sessions#vet_new"
 
 # -------[post for new pet/user/vet]-----------------------------
