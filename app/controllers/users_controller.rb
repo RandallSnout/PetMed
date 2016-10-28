@@ -164,15 +164,15 @@ class UsersController < ApplicationController
 	def vet_input
 		@pet = Pet.find(params[:id])
 		@vet = Vet.find(current_user.id)
-		@comment =  Vet.joins(:comments).select("Last_name as vet_name", "note as vets_note", "comments.created_at" )
 		@rec = Pet.joins(:record).select("fixed","allergy", "behavior", "records.pet_id as pet_rec_id").find_by("pet_id = #{@pet.id}")
 		@shot = Shot.where("pet_id = #{@pet.id}").first
+		@comments = Vet.joins(:comments).select("note", "first_name", "last_name", "comments.created_at", "pet_id").where("pet_id = #{params[:id]}")
 	end
 
 	def notes
 		@vet =  Vet.find(current_user.id)
 		@pet = Pet.find(params[:id])
-			note = Comment.create(note: params[:comment], vet_id: current_user.id)
+			note = Comment.new(note: params[:comment], vet_id: current_user.id)
 		 if note.save
 		 	note.pet_id = @pet.id
 		 	note.save

@@ -18,7 +18,7 @@
               </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4"><%= @pet.name %><i class="material-icons right">...</i></span>
-                <p><a href="/pets/profile/<%= @pet.id %>">Pet Profile</a></p>
+                
               </div>
               <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4"><%= @pet.name %><i class="material-icons right">X</i></span>
@@ -126,21 +126,16 @@
       </form>
     </div>
     
-    <ul class="collection push3">
-      <% @comment.reverse_each do |c| %>
-      <li class="collection-item avatar Vet_Icon profile">
-        <% if @vet.avatar_file_name %>
-        <%= image_tag @vet.avatar.url %>
-       <% else %>
-       <%= image_tag("profile-holder", :class => "Vet_Icon") %>
+  <div class="col s12 scroll">
+    <h3>Doctor's Notes History</h3>
+    <% @comments.each do |comment| %>
+      <p><strong>Dr.<%= comment.first_name %> <%= comment.last_name %></strong> - <%= comment.created_at.strftime("%b %d, %Y") %></p>
+      <p><%= comment.note %><p>
+      <hr />
+    <% end %>
+  </div>
 
-        <% end %>
-        <span class="title">Dr. <%= c.vet_name%>:</span>
-        <p><span class="color3">'<%= c.created_at.strftime("%b %d, %Y")%>'</span><br><%= c.vets_note %></p>
-      </li>
-        <%end%>
-    </ul>
-    </div>
+
     <!--end of parallax content-->
   </div>  
   </div>
