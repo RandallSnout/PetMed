@@ -1,10 +1,14 @@
 <div class="row">
 <div class="col s5">
-<h1>Dr. <%= @vet.first_name %> <%= @vet.last_name %></h1>
-<h3>Office: <%= @vet.office_name %></h3>
-<h3>Email: <%= @vet.email %></h3>
-<h3>Phone: </h3>
-<h3>Address:</h3>
+<div class="col s6">
+	<%= image_tag @vet_profile.avatar.url %>
+</div>
+<h4>Dr. <%= @vet.first_name %> <%= @vet.last_name %></h4>
+<h5>Office: <%= @vet.office_name %></h5>
+<p>Email: <%= @vet.email %></p>
+<p>Phone: <%= @vet.phone_number %></p>
+<div class="clear"></div>
+<p>Address:</p>
 <div class="col s11 offset-s1">
 <h5><%= @vet.street %></h5>
 <h5><%= @vet.city %>, <%= @vet.state %> <%= @vet.zip %> </h5>
@@ -19,4 +23,44 @@
     &q=<%= @vet.street %>+<%= @vet.city %>+<%= @vet.state %>" allowfullscreen>
 </iframe>
 </div>
+</div>
+<div class="row">
+	<div class="col s8">
+		<h5>Dr. <%= @vet.first_name %> <%= @vet.last_name %> Experience</h5>
+		 <table>
+          <tr>
+            <td>Current:</td>
+            <td>Peaceful Paws Veterinary Services, LLC, Veterinary Relief Services, Susan L. Brockus, DVM, MPH</td>
+          </tr>
+          <tr>
+            <td>Previous:</td>
+            <td>A Plus Animal Hospital, Fairgrounds Animal Hospital, VCA Feline Medical Center</td>
+          </tr>
+          <tr>
+            <td>Education:</td>
+            <td>University of Iowa, College of Public Health</td>
+          </tr>
+      </table>
+	</div>
+	<div class="col s4">
+		<h5>Veterinarian Information</h5>
+		<table>
+          <tr>
+            <td>License #:</td>
+            <td>254243</td>
+          </tr>
+          <tr>
+            <td>License Status:</td>
+            <td>Active</td>
+          </tr>
+          <tr>
+            <td>License Issue Date:</td>
+            <td>6/19/2014</td>
+          </tr>
+          <tr>
+            <td>License Expiration Date:</td>
+            <td>10/13/2018</td>
+          </tr>
+      </table>
+	</div>
 </div>

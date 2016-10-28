@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 	end
 
 	def users_profile 
-		@user = User.joins(:address).select("first_name", "last_name","phone_number", "street", "state", "city", "zip", "avatar_file_name").find(current_user.id)
+		@user = User.joins(:address).joins(:vet).select("first_name", "last_name","phone_number", "street", "state", "city", "zip", "avatar_file_name", "vet_id").find(current_user.id)
 		@pets = Pet.where("user_id = #{current_user.id}")
 	end
 
@@ -118,7 +118,8 @@ class UsersController < ApplicationController
 	end
 
 	def vet_show
-		@vet = Vet.joins(:address).select("first_name", "last_name","email","office_name", "street", "state", "city", "zip").find(params[:id])
+		@vet = Vet.joins(:address).select("first_name", "last_name","email","phone_number", "office_name", "street", "state", "city", "zip").find(params[:id])
+		@vet_profile = Vet.find(params[:id])
 	end
 
 
