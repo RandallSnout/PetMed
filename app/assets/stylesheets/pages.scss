@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.logo img{
+	width:140px;
+	z-index:10;
+	position:absolute;
+	margin-top:3px;
+	background:#3f51b5;
+	padding:5px; 
+	border-radius:5px;
+}
+
 .margin-left {
 	margin-left: 125px;
 }
