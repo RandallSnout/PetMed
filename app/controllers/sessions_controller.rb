@@ -21,8 +21,8 @@ class SessionsController < ApplicationController
 			flash[:error] = "Invalid Login"
 			redirect_to :back
 		end
-			
-  end
+	end
+
 
   def destroy
 		reset_session

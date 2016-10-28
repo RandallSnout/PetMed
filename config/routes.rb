@@ -18,12 +18,16 @@ Rails.application.routes.draw do
   post "users/register" => "users#create_user"
   post "vets/register" => "users#create_vet"
   post "pets/create" => "pets#create"
+  post "note/:id" => "users#notes"
+
+  
 # -------[Both User and Vet Redirect]----------------------
   get "profile/:id" => "users#redirect"
   get "vet_profile/:id" => "users#vet_redirect"
 
 # -------[vet main profile page and update]----------------------
   get "vets/:id" => "users#vet_profile"
+  get "pets/admin/:id" => "users#vet_input"
 
 # -------[owner to vets profile page]-----------------------------
   get "vets/public/:id" => "users#vet_show"
@@ -47,6 +51,7 @@ Rails.application.routes.draw do
   patch "users/update/:id" => 'users#update_user'
   patch "vets/update/:id" => 'users#update_vet'
   patch "pet/update/:id" => 'pets#update'
+  patch "records/:id" => "users#records"
 
 # -------[destroy]-----------------------------------------------
   delete 'sessions/logout' => 'sessions#destroy'

@@ -1,0 +1,147 @@
+</div>
+<div class="parallax-container">
+    <div class="parallax"><%= image_tag "thewalk2" %></div>
+</div>
+<div class="section white">
+  <div class="row container">
+    <h2 class="header"><%= @pet.name %>'s Medical Record</h2>
+          <!-- -->
+    <div class="row">
+          <div class="col s3">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <% if @pet.avatar_file_name %>
+                  <%= image_tag @pet.avatar.url %>
+                <% else %>
+                  <%= image_tag "profile-holder" %>
+                <% end %>
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4"><%= @pet.name %><i class="material-icons right">...</i></span>
+                <p><a href="/pets/profile/<%= @pet.id %>">Pet Profile</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><%= @pet.name %><i class="material-icons right">X</i></span>
+                <p><%= @pet.name %>'s Profile</p>
+                <ul>
+                  <li>PIN #: <%= @pet.pin %></li>
+                  <li>Species: <%= @pet.species %></li>
+                  <li>Breed: <%= @pet.breed %></li>
+                  <li>Gender: <%= @pet.sex %></li>
+                  <li>Color: <%= @pet.color %></li>
+                  <li>Age: <%= @pet.age %> years</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+    <!-- form start-->
+
+    <div class="col s3">
+      <h5 class="color6">
+        <p><%= @pet.name %>'s Info</p>
+        <ul>
+          <li>PIN #: <%= @pet.pin %></li>
+          <li>Species: <%= @pet.species %></li>
+          <li>Breed: <%= @pet.breed %></li>
+          <li>Gender: <%= @pet.sex %></li>
+          <li>Color: <%= @pet.color %></li>
+          <li>Age: <%= @pet.age %> years</li>
+        </ul>
+      </h5>
+      </div>
+      <div class="col s3">
+      <h5 class="color6">
+        <p>Records</p>
+        <ul>
+          <li>Fixed: <%= @rec.fixed %></li>
+          <li>Vaccines: <%= @shot.vaccine %></li>
+          <li>Allergies: <%= @rec.allergy %></li>
+          <li>Behavior: <%= @rec.behavior %></li>
+        </ul>
+      </h5>
+    </div>
+    </div>
+          <div class="Move8">
+            <div class="">
+              <form class="col s12 form_u " action="/records/<%= @pet.id %>" method="post">
+                  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                  <input type="hidden" name="_method" value="patch">
+                  <div class="input-field col s3">
+                    <p>
+                      <h5>Spayed/Neutered</h5>
+                      <input name="fixed" type="checkbox" value="No" id="No"/>
+                      <label for="No">No</label>
+                    </p>
+                    <p>
+                      <input name="fixed" type="checkbox" value="Yes" id="Yes" />
+                      <label for="Yes">Yes</label>
+                    </p>
+                    <br>
+                    <h5>Shots</h5>
+                    <p>
+                      <input name="vaccine" type="checkbox" value="Rabies Virus" id="Rabies" />
+                      <label for="Rabies">Rabies Virus</label>
+                    </p>
+                    <p>
+                      <input name="vaccine" type="checkbox" value="Core" id="Core" />
+                      <label for="Core">Core</label>
+                    </p>
+                    <p>
+                      <input name="vaccine" type="checkbox" value="Influenza" id="Influenza" />
+                      <label for="Influenza">Influenza</label>
+                    </p>
+                    <p>
+                      <input name="vaccine" type="checkbox" value="Measles" id="Measles" />
+                      <label for="Measles">Measles</label>
+                    </p>
+                  </div>
+                  <div class="input-field col s3">
+                    <h5>Allergies</h5>
+                    <input name="allergy" id="allergy" type="text" class="validate" placeholder="Allergies">
+                    <!-- <label  class="active" for="allergy">Allergies</label> -->
+                  </div>
+                  <div class="input-field col s3">
+                    <h5>Behavior</h5>
+                    <input name="behavior" id="allergy" type="text" class="validate" placeholder="Behavior">
+                    <!-- <label class="active" for="allergy">Any Behavior Issues?</label> -->
+                  </div>
+                <input class="btn waves-light submit1" type="submit" value="Submit" >
+              </form>
+            </div>
+          <br>
+          <br>
+          <div class="clear"></div>
+
+    <div class="container push2">
+      <h3>Comments for Patient</h3>
+      <form action="/note/<%= @pet.id %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <textarea name='comment' id='comment' rows="8" cols="50"></textarea><br />
+        <input type='submit' value='Submit' class="waves-effect waves-light btn" />  
+      </form>
+    </div>
+    
+    <ul class="collection push3">
+      <% @comment.reverse_each do |c| %>
+      <li class="collection-item avatar Vet_Icon profile">
+        <% if @vet.avatar_file_name %>
+        <%= image_tag @vet.avatar.url %>
+       <% else %>
+       <%= image_tag("profile-holder", :class => "Vet_Icon") %>
+
+        <% end %>
+        <span class="title">Dr. <%= c.vet_name%>:</span>
+        <p><span class="color3">'<%= c.created_at.strftime("%b %d, %Y")%>'</span><br><%= c.vets_note %></p>
+      </li>
+        <%end%>
+    </ul>
+    </div>
+    <!--end of parallax content-->
+  </div>  
+  </div>
+  <div class="parallax-container">
+    <div class="parallax"><%= image_tag "thewalk2" %></div>
+  </div>
+
+

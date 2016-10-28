@@ -13,18 +13,22 @@
 */
 .fullbackground {
 	z-index:0;
-	background-image: url('/assets/Background1.jpg');
+    height: 1100px;
+	background-image: url('/assets/Background4.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding-top: 20px;
+    overflow: hidden !important;
 }
 
 .fullbackground2 {
 	z-index:0;
+    height: 1040px;
 	background-image: url('/assets/BackgroundRes.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding-top: 5px;
+    overflow: hidden !important;
 }
 
 

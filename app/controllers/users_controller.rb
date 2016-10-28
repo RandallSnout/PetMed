@@ -161,6 +161,37 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def vet_input
+		@pet = Pet.find(params[:id])
+		@vet = Vet.find(current_user.id)
+		@comment =  Vet.joins(:comments).select("Last_name as vet_name", "note as vets_note", "comments.created_at" )
+		@rec = Pet.joins(:record).select("fixed","allergy", "behavior", "records.pet_id as pet_rec_id").find_by("pet_id = #{@pet.id}")
+		@shot = Shot.where("pet_id = #{@pet.id}").first
+	end
+
+	def notes
+		@vet =  Vet.find(current_user.id)
+		@pet = Pet.find(params[:id])
+			note = Comment.create(note: params[:comment], vet_id: current_user.id)
+		 if note.save
+		 	note.pet_id = @pet.id
+		 	note.save
+		 	redirect_to :back
+		 end
+	end
+
+	def records
+		@pet = Pet.find(params[:id])
+		rec = Record.find_by("pet_id = #{@pet.id}")
+		rec.update(fixed: params[:fixed], allergy: params[:allergy], behavior: params[:behavior])
+		shot = Shot.new(records_id:"#{rec.id}", pet_id:"#{@pet.id}", vaccine:params[:vaccine])
+		if shot.save
+			redirect_to :back
+		end
+
+	end
+
+
 
 # ------------------------------------------------
 
