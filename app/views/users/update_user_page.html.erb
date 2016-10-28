@@ -131,8 +131,21 @@
 			    </div>
 			  </div>
 			  <p><%= pet.name %></p>
-			  <a class="waves-effect waves-light btn" href="/pets/delete/<%= pet.id %>">Delete Pet</a>
+			  <a class="waves-effect waves-light btn modal-trigger" href="#Pet<%= pet.id %>">Remove</a>
 		  </div>
+<!-- ========================== START DELETE MODAL ================================ -->
+			<div id="Pet<%= pet.id %>" class="modal">
+			    <div class="modal-content2">
+					<h5>Are you sure you want to Delete <%= pet.name %>?</h5>
+					<p>All records will be removed.</p>
+					<p>From everyone at Pet Med, our condolences.</p>
+				</div>
+			    <div class="modal-footer">
+			    	<a class="waves-effect waves-light btn red left" href="/pets/delete/<%= pet.id %>">Remove Pet</a>
+			  		<a class="waves-effect waves-light btn modal-close">Cancel</a>
+			    </div>
+			</div>
+<!-- ========================== END DELETE MODAL ================================ -->
 	  <% end %>
 	</div>
 </div>
