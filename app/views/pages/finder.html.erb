@@ -18,10 +18,12 @@
 		<td><%= v.first_name %> <%= v.last_name %></td>
 		<td><%= v.office_name %></td>
 		<td><%= v.street %>, <%= v.city %>, <%= v.state %>, <%= v.zip %></td>
-		<% if current_user %>
+		<% if current_user && @a != nil %>
 			<% if v.VET_ID != @a.VETS_ID %>
-				<td><a class="btn waves-light" href="users/join">Join</a></td>
+				<td><a class="btn waves-light" href="/users/change/<%= v.VET_ID %>">Join</a></td>
 			<% end %>		
+		<% else current_user && @a == nil %>
+			<td><a class="btn waves-light" href="/users/change/<%= v.VET_ID %>">Join</a></td>
 		<% end %>
 	</tr>
 	<% end %>

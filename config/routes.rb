@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   get "users/:id" => "users#users_profile"
   get 'update/user/:id' => 'users#update_user_page'
   get 'users/bypass/:id' => 'users#update_user'
-  get "users/change" => "users#change_vet"
+  get "users/change/:id" => "users#change_vet"
   
 # -------[pet register/update/profile]---------------------------
   get 'new/pet' => 'pets#new'

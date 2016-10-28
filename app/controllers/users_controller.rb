@@ -83,8 +83,9 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def join_vet
-
+	def change_vet
+		User.find(current_user.id).update(vet_id:params[:id])
+		redirect_to :back
 	end
 
 	def leave_vet
