@@ -1,51 +1,64 @@
-</div>
-
-
-<div class="fullbackground2">
-  <div class="andrew2">
+<div class="row">
+  <div class="col s6">
+    <h2>Why PetMed?</h2>
+    <p>PetMed is here to streamline Veterinarian medical record keeping. In order to cut down on the use of physical paper we have created a database that will store al paperwork in the cloud and allow the patients owner to view the files when ever they need them. With cloud storage new patients can connect to your office and Veterinarians can review the files before even seeing the patient.</p>
+    <%= image_tag "Records2" %>
+    <h4>Benefits For Vet Offices.</h4>
+    <ul>
+      <li>Files in one place.</li>
+      <li>Reach more customers.</li>
+      <li>No more scanning new patients in.</li>
+      <li>Quicker response for emergencies.</li>
+      <li>Happier Customers.</li>
+      <li>Easy to use interface.</li>
+      <li>Additional marketing to public.</li>
+    </ul>
+  </div>
+  <div class="col s6">
     <form class="col s12 form_u " action="/vets/register" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <div class="input-field col s1">
+        <div class="input-field col s12">
           <input  id="office_name" type="text" class="validate" name="vet[office_name]">
           <label for="name">Office Name</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input  id="last_name" type="text" class="validate" name="vet[first_name]">
           <label for="name">Dr's First Name</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input  id="last_name" type="text" class="validate" name="vet[last_name]">
           <label for="name">Dr's Last Name</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input id="email" type="email" class="validate" name="vet[email]">
           <label for="email">Email</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input id="phone_number" type="text" class="validate" name="vet[phone_number]" placeholder="000-000-0000">
           <label for="phone_number">Phone Number</label>
-        <div class="input-field col s3">
+        </div>
+        <div class="input-field col s12">
           <label for="password">Password</label>
           <input id="password" type="password" class="validate" name="vet[password]">
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
             <label for="passConfirm">Password Confirmation</label>
             <input id="passConfirm" type="password" name="password_confirmation">
           <h5 class="h5l2">Address</h5>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input id="street" type="text" class="validate" name="address[street]">
           <label for="street">Street</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input id="city" type="text" class="validate" name="address[city]">
           <label for="city">City</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input id="state" type="text" class="validate" name="address[state]">
           <label for="state">State</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input id="zip" type="number" class="validate" name="address[zip]">
           <label for="zip">Zip Code</label>
         </div>
@@ -62,7 +75,6 @@
       <% end %>
     <% end %>
     </span>
-  <div>
-    
+  </div>
 </div>
 

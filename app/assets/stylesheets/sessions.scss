@@ -2,37 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*.petad {
-    width: 531px;
-    display: inline-block;
-    margin: 0;
-    margin-left: 6em;
-    padding: 0;
-    margin-top: -1px !important;
-}
-*/
-.fullbackground {
-	z-index:0;
-    height: 1100px;
-	background-image: url('/assets/Background4.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	padding-top: 20px;
-    overflow: hidden !important;
-}
 
-.fullbackground2 {
-	z-index:0;
-    height: 1040px;
-	background-image: url('/assets/BackgroundRes.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	padding-top: 5px;
-    overflow: hidden !important;
-}
-
-
-.andrew {
+.newOwnerForm {
 	width: 500px;
     background: rgba(255, 255, 255, 0.3);
     padding-top: 20px;

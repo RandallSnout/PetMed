@@ -1,48 +1,62 @@
 </div>
-
-<div class="ad">
-  
+<div class="row">
+  <%= image_tag "thewalk3" %>
 </div>
 
-<div class="fullbackground">
-  <div class="andrew">
+<div class="container">
+<div class="row">
+  <div class="col s6">
+    <h3>Why use PetMed?</h3>
+    <p>With a PetMed account you can have your pets files at your finger tips. We often take our pets places that we need their records, with PetMed those records are on the cloud. With participating Veterinarian offices files can be instantly updated by certified Veterianarians. With having all your records centrally located it make it easier for:</p>
+    <ul>
+      <li>Grooming</li>
+      <li>County records</li>
+      <li>Emergency Hospital Visits</li>
+      <li>Moving Homes</li>
+      <li>Vacationing</li>
+      <li>Pet Daycare/Babysitting</li>
+    </ul>
+    <p>We are constantly growing and looking for new opportunities and the features list will constantly grow.</p>
+    <%= image_tag "userRegDog" %>
+  </div>
+  <div class="col s6">
     <form class="col s12 form_u " action="/users/register" method="post">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <div class="input-field col s1">
+        <div class="input-field col s12">
           <input  id="first_name" type="text" class="validate" name="user[first_name]">
           <label for="first_name">First Name</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input  id="last_name" type="text" class="validate" name="user[last_name]">
           <label for="last_name">Last Name</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input id="email" type="email" class="validate" name="user[email]">
           <label for="email">Email</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <label for="password">Password</label>
           <input id="password" type="password" class="validate" name="user[password]">
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
             <label for="passConfirm">Password Confirmation</label>
             <input id="passConfirm" type="password" name="password_confirmation">
           <h5 class="h5l">Address</h5>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input id="street" type="text" class="validate" name="address[street]">
           <label for="street">Street</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input id="city" type="text" class="validate" name="address[city]">
           <label for="city">City</label>
         </div>
 
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input id="state" type="text" class="validate" name="address[state]">
           <label for="state">State</label>
         </div>
-        <div class="input-field col s3">
+        <div class="input-field col s12">
           <input id="zip" type="number" class="validate" name="address[zip]">
           <label for="zip">Zip Code</label>
         </div>
@@ -59,8 +73,5 @@
       <% end %>
     <% end %>
     </span>
-  <div>
-    
+  </div>
 </div>
-
-<div>
