@@ -9,7 +9,7 @@ class CreateShots < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :shots, :pets
+    add_foreign_key :shots, :pet
     add_foreign_key :shots, :records
   end
 end
