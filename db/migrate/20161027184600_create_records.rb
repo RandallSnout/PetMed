@@ -4,7 +4,7 @@ class CreateRecords < ActiveRecord::Migration
       t.string :fixed
       t.string :allergy
       t.string :behavior
-      t.references :pets, index: true
+      t.references :pet, index: true
 
       t.timestamps null: false
     end
