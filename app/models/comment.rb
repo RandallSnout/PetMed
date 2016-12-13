@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  belongs_to :pets
-  belongs_to :vets
+  belongs_to :pet
+  belongs_to :vet
   
 end
