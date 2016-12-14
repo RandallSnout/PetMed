@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 	def users_profile 
 		@user = User.joins(:address).select("first_name", "last_name","phone_number", "street", "state", "city", "zip", "avatar_file_name").find(current_user.id)
 		@pets = Pet.where("user_id = #{current_user.id}")
-		@a = Vet.joins(:users).select("vets.id as VETS_ID", "vets.first_name as VETS_FN","vets.last_name as VETS_LN").find_by("users.id == #{current_user.id}")
+		@a = Vet.joins(:users).select("vets.id as VETS_ID", "vets.first_name as VETS_FN","vets.last_name as VETS_LN").find_by("users.id = #{current_user.id}")
 	end
 
 	def create_user
