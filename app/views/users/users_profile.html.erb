@@ -52,7 +52,7 @@
 		<p><%= @user.street %></p>
 		<p><%= @user.city %>, <%= @user.state %>, <%= @user.zip%></p>
 		<% if @a != nil %>
-			<p>My Doctor is: <a href="/vets/public/<%= @a.vID %>"><%= @a.vFN %> <%= @a.vLN %></a></p>
+			<p>My Doctor is: <a href="/vets/public/<%= @a.VETS_ID %>"><%= @a.VETS_FN %> <%= @a.VETS_LN %></a></p>
 		<% end %>
 		<a class="waves-effect waves-light btn" href="/update/user/<%= current_user.id %>">Edit Your Profile</a>
 		<a class="waves-effect waves-light btn" href="/new/pet">Add New Pet</a>
