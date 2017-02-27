@@ -61,7 +61,7 @@
 	<tr>
 		<td><a href="/vets/public/<%= v.vet_id %>"> <%= v.first_name %> <%= v.last_name %></a></td>
 		<td><%= v.office_name %></td>
-		<td><%= v.street %>, <%= v.city %>, <%= v.state %>, <%= v.zip %></td>
+		<td><%= v.street %>, <%= v.city %>, <%= v.state %>, <%= v.zip %><%=v._id%></td>
 		<% if current_user %>
 			<% if current_user && @a != nil %>
 				<% if v.vet_id != @a.VETS_ID %>
