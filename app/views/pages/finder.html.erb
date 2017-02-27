@@ -64,7 +64,7 @@
 		<td><%= v.street %>, <%= v.city %>, <%= v.state %>, <%= v.zip %></td>
 		<% if current_user %>
 			<% if current_user && @a != nil %>
-				<% if v.VET_ID != @a.VETS_ID %>
+				<% if v.vet_id != @a.vets.id %>
 					<td><a class="btn waves-light" href="/users/change/<%= v.vet_id %>">Join</a></td>
 				<% end %>		
 			<% else current_user && @a == nil %>
