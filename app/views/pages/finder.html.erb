@@ -61,10 +61,10 @@
 	<tr>
 		<td><a href="/vets/public/<%= v.vet_id %>"> <%= v.first_name %> <%= v.last_name %></a></td>
 		<td><%= v.office_name %></td>
-		<td><%= v.street %>, <%= v.city %>, <%= v.state %>, <%= v.zip %><%=v.id%></td>
+		<td><%= v.street %>, <%= v.city %>, <%= v.state %>, <%= v.zip %></td>
 		<% if current_user %>
 			<% if current_user && @a != nil %>
-				<% if v.id != @a.VETS_ID %>
+				<% if v.vet_id != @a.vets_id %>
 					<td><a class="btn waves-light" href="/users/change/<%= v.vet_id %>">Join</a></td>
 				<% end %>		
 			<% else current_user && @a == nil %>
