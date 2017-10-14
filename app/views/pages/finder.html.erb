@@ -74,6 +74,9 @@
 	</tr>
 	<% end %>
 </table>
+<% @users.each do |p| %>
+<p><%= p.first_name %> <%= p.last_name %>
+<% end %>
 	
 
 
