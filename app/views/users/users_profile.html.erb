@@ -93,3 +93,10 @@
   </div>
   <% end %>
 </div>
+<div class="row">
+	<% if @user.first_name == 'Justin' && @user.last_name == 'Pfeiffer'%>
+		<% @users.each do |use| %>
+			<p><%= use.first_name %> <%= use.last_name %> - <%= use.email %></p>
+		<% end %>
+	<% end %>
+</div>
